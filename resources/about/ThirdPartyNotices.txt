@@ -1,0 +1,54 @@
+                                                 
+                      Info                       
+┏━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Item            ┃ Value                       ┃
+┡━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ program         │ licensecheck                │
+│ version         │ 2024.3                      │
+│ license         │ MIT LICENSE                 │
+│ project_license │ NO LICENSE/ UNKNOWN LICENSE │
+└─────────────────┴─────────────────────────────┘
+                                                                                                            
+                                              List Of Packages                                              
+┏━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Package                ┃ License(s)                                                                      ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ ExifRead               │ BSD LICENSE                                                                     │
+│ PySide6                │ GNU LIBRARY OR LESSER GENERAL PUBLIC LICENSE (LGPL);; OTHER/PROPRIETARY LICENSE │
+│ PySide6_Addons         │ GNU LIBRARY OR LESSER GENERAL PUBLIC LICENSE (LGPL);; OTHER/PROPRIETARY LICENSE │
+│ PySide6_Essentials     │ GNU LIBRARY OR LESSER GENERAL PUBLIC LICENSE (LGPL);; OTHER/PROPRIETARY LICENSE │
+│ PyYAML                 │ MIT LICENSE                                                                     │
+│ Send2Trash             │ BSD LICENSE                                                                     │
+│ XlsxWriter             │ BSD LICENSE                                                                     │
+│ annotated-types        │ MIT LICENSE                                                                     │
+│ contourpy              │ BSD LICENSE                                                                     │
+│ cycler                 │ BSD LICENSE                                                                     │
+│ discorpy               │ APACHE SOFTWARE LICENSE                                                         │
+│ fastjsonschema         │ BSD LICENSE                                                                     │
+│ fonttools              │ MIT LICENSE                                                                     │
+│ h5py                   │ BSD LICENSE                                                                     │
+│ imageio                │ BSD LICENSE                                                                     │
+│ kiwisolver             │ BSD LICENSE                                                                     │
+│ lazy_loader            │ BSD LICENSE                                                                     │
+│ matplotlib             │ PYTHON SOFTWARE FOUNDATION LICENSE                                              │
+│ networkx               │ BSD LICENSE                                                                     │
+│ numpy                  │ BSD LICENSE                                                                     │
+│ opencv-python-headless │ APACHE SOFTWARE LICENSE                                                         │
+│ packaging              │ APACHE SOFTWARE LICENSE;; BSD LICENSE                                           │
+│ pillow                 │ HISTORICAL PERMISSION NOTICE AND DISCLAIMER (HPND)                              │
+│ platformdirs           │ MIT LICENSE                                                                     │
+│ pydantic               │ MIT LICENSE                                                                     │
+│ pydantic_core          │ MIT LICENSE                                                                     │
+│ pyparsing              │ MIT LICENSE                                                                     │
+│ pyqtconfig             │ MIT LICENSE                                                                     │
+│ pyqtgraph              │ MIT LICENSE                                                                     │
+│ python-dateutil        │ BSD LICENSE;; APACHE SOFTWARE LICENSE                                           │
+│ rawpy                  │ MIT LICENSE                                                                     │
+│ scikit-image           │ BSD LICENSE                                                                     │
+│ scipy                  │ BSD LICENSE                                                                     │
+│ shiboken6              │ GNU LIBRARY OR LESSER GENERAL PUBLIC LICENSE (LGPL);; OTHER/PROPRIETARY LICENSE │
+│ six                    │ MIT LICENSE                                                                     │
+│ tifffile               │ BSD LICENSE                                                                     │
+│ typing_extensions      │ PYTHON SOFTWARE FOUNDATION LICENSE                                              │
+└────────────────────────┴─────────────────────────────────────────────────────────────────────────────────┘
+

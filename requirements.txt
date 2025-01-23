@@ -1,0 +1,5 @@
+-r requirements_core.txt
+pyqtgraph==0.13.7
+pyside6==6.8.1.1
+pyside6-addons==6.8.1.1
+pyside6-essentials==6.8.1.1
