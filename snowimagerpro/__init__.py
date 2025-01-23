@@ -17,7 +17,7 @@
 #
 
 __APPNAME__ = "SnowImagerPro"
-__VERSION__ = "0.2.0"
+__VERSION__ = "0.3.0-alpha"
 __AUTHOR__ = "Lars Mewes"
 __ORGNAME__ = "SLF"
 __DOMAIN__ = "slf.ch"
