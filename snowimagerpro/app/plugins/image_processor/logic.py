@@ -176,21 +176,22 @@ class Logic(LogicBase):
 
         logging.getLogger(logger).info(f"Opened {N} image viewer(s)")
 
-    def save(self, folder=None):
-        if folder:
-            user_config.set("processor.h5_path", folder)
+    def save(self, fp=None, folder=None):
+        print(folder, "here")
+        if folder is not None:
+            user_config.set("processor.h5_path", str(folder.parent))
 
-        def func(folder=folder):
-            return public_data.img_set.save_as_h5(folder=folder)
+            def func(folder=folder):
+                return public_data.img_set.save_as_h5(fp=fp, folder=folder)
 
-        worker = ImageProcessor([func])
+            worker = ImageProcessor([func])
 
-        dlg = AddToDatabaseDialog()
+            dlg = AddToDatabaseDialog()
 
-        worker.signals.result.connect(dlg.add_fp)
-        threadpool.start(worker)
+            worker.signals.result.connect(dlg.add_fp)
+            threadpool.start(worker)
 
-        dlg.exec()
+            dlg.exec()
 
     def close_views(self):
         return super().close_views()
