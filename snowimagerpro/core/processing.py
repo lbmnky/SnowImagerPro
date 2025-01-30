@@ -399,10 +399,10 @@ class ImageSet:
         # TODO: add group [_img_type][_grp] for optional col-major or row-major blending
         # TODO: If col/row-major blending perform here
 
-    def save_as_h5(self, folder=None):
+    def save_as_h5(self, fp=None, folder=None):
         for key, img in self.stitched_image.items():
             print(f"Saving image {key} to h5.")
-            fn = img.save_as(folder)
+            fn = img.save_as(fp, folder)
 
         return fn
 
@@ -590,7 +590,7 @@ class Image:
         else:
             logging.warning("Serial number does not match calibration data.")
 
-    def save_as(self, folder=None, filetype="h5"):
+    def save_as(self, fp=None, folder=None, filetype="h5"):
         if filetype.lower() in ["h5", "hdf5"]:
             exif = self._exif[-1][1]
             orig_meta = self._meta["orig_meta"][-1][1]
@@ -600,17 +600,21 @@ class Image:
             date = orig_meta["date"]
             location = orig_meta["location"]
 
-            dtime = datetime.now().strftime("%Y%m%d_%H%M")
-
-            fn = f"{date}_{location}/processedOn_{dtime}.h5"
-
-            if not folder:
-                output_file = Path("tests/data/test_out/" + fn)
+            if fp is not None:
+                fn = fp
             else:
-                if isinstance(folder, str):
-                    output_file = Path(folder) / Path(fn)
-                else:
-                    output_file = folder / Path(fn)
+                dtime = datetime.now().strftime("%Y%m%d_%H%M")
+                fn = f"{date}_{location}/processedOn_{dtime}.h5"
+
+            #if not folder:
+            #    output_file = Path("tests/data/test_out/" + fn)
+            #else:
+            #if isinstance(folder, str):
+            #    output_file = Path(folder) / Path(fn)
+            #else:
+            #    output_file = folder / Path(fn)
+
+            output_file = Path(fn)
 
             output_file.parent.mkdir(exist_ok=True, parents=True)
 
