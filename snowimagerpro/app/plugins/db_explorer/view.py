@@ -443,6 +443,9 @@ class Explr(QWidget):
         action_addROI_gray = menu.addAction("Add gray ROI")
         action_removeROI_white = menu.addAction("Remove white ROI")
         action_removeROI_gray = menu.addAction("Remove gray ROI")
+        menu.addSeparator()
+        action_removeROI_all = menu.addAction("Remove all ROIs")
+        action_addROI_ref = menu.addAction("Add reference ROI")
 
         uuids = self.get_selected_uuids()
 
@@ -455,6 +458,10 @@ class Explr(QWidget):
             logic.remove_ROI(uuids, "white")
         elif res == action_removeROI_gray:
             logic.remove_ROI(uuids, "gray")
+        elif res == action_removeROI_all:
+            logic.remove_ROI(uuids, "all")
+        elif res == action_addROI_ref:
+            logic.add_ROI(uuids, "ref")
 
     def dragEnterEvent(self, e):
         if e.mimeData().hasUrls():

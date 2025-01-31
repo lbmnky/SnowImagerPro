@@ -23,7 +23,7 @@ from snowimagerpro.app.managers import user_config
 from snowimagerpro.app.managers.data import raw_image_dbs
 from snowimagerpro.app.managers.jobs import threadpool
 from snowimagerpro.app.workers.run_func import ImageProcessor
-from snowimagerpro.core.metadata import ImageMetadata
+from snowimagerpro.core.metadata import ImageMetadata, DEFAULT_ROI_TOP, DEFAULT_ROI_BOTTOM, DEFAULT_ROI_REF
 from snowimagerpro.core.methods import helper
 
 from ..base import LogicBase, public_data
@@ -123,6 +123,12 @@ class Logic(LogicBase):
             date_match = re.search(r'\d{4}-\d{2}-\d{2}', filename)
             if date_match:
                 meta.date = date_match.group()
+
+
+            if "top" in filename.lower():
+                meta.ROI = DEFAULT_ROI_TOP
+            else:
+                meta.ROI = DEFAULT_ROI_BOTTOM
 
 
             model.public.img_set._image_db[uuid] = meta
@@ -270,6 +276,8 @@ class Logic(LogicBase):
     def update_img_type(self, val, uuids):
         for uuid in uuids:
             model.public.img_set._image_db[int(uuid)].img_type = str(val)
+            if str(val).lower == "ref":
+                model.public.img_set._image_db[int(uuid)].ROI = DEFAULT_ROI_REF
 
     @focus_list
     @update_raw_image_dbs
@@ -334,6 +342,8 @@ class Logic(LogicBase):
             elif which == "white":
                 new_ROI = [[0.3, 0.3], [0.4, 0.4]]
                 _ROI[1].append(new_ROI)
+            elif which == "ref":
+                _ROI = DEFAULT_ROI_REF
 
             db._image_db[uuid].update({"ROI": _ROI})
 
@@ -353,6 +363,8 @@ class Logic(LogicBase):
                 _ROI[0].pop()
             elif which == "white":
                 _ROI[1].pop()
+            elif which == "all":
+                _ROI = [[], []]
 
             db._image_db[uuid].update({"ROI": _ROI})
 
