@@ -76,12 +76,13 @@ class Ui_Form(object):
 
         self.show_meta = QTextEdit(self.frame)
         self.show_meta.setObjectName(u"show_meta")
+        self.show_meta.setStyleSheet(u"background-color: rgb(61, 65, 76);")
         self.show_meta.setReadOnly(True)
 
         self.verticalLayout_2.addWidget(self.show_meta)
 
-        self.verticalLayout_2.setStretch(0, 3)
-        self.verticalLayout_2.setStretch(1, 1)
+        self.verticalLayout_2.setStretch(0, 5)
+        self.verticalLayout_2.setStretch(1, 2)
         self.splitter.addWidget(self.frame)
         self.frame_2 = QFrame(self.splitter)
         self.frame_2.setObjectName(u"frame_2")

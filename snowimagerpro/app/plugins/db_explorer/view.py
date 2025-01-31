@@ -745,8 +745,12 @@ class Explr(QWidget):
                 for roi_handle in roi_handles:
                     roi_handle.translatable = state
                     roi_handle.resizable = state
+
+                    # show handles
                     for handle in roi_handle.getHandles():
-                        print(dir(handle))
+                        handle.setVisible(True)
+
+        self._ui.graphWidget.update() # FIX: Zoom issue after toggle ROI
 
     def toggle_rois_visible(self, state):
         if hasattr(self, "ROI_handles"):
@@ -754,6 +758,12 @@ class Explr(QWidget):
                 for roi_handle, text_handle in zip(roi_handles, text_handles):
                     roi_handle.setVisible(state)
                     text_handle.setVisible(state)
+
+                    # hide handles BUG reappears when clicking ROI
+                    for handle in roi_handle.getHandles():
+                        handle.setVisible(False)
+
+
 
     def toggle_coords_pix_movable(self, state):
         if hasattr(self, "coords_pix_handle"):

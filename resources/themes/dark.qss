@@ -25,6 +25,7 @@ QTabWidget * {
     color: #B3ffffff;
 }
 
+
 /* TABS */
 QTabWidget::tab-bar {
     border: 1px solid gray;
@@ -60,6 +61,10 @@ QTabWidget::pane {
 QTreeWidget::item:focus {
     selection-color: white;
     selection-background-color: #0099CC;
+}
+
+QTreeView {
+    border: 1px solid #2c313e;
 }
 
 QTreeView::hover {
@@ -142,6 +147,7 @@ QLabel#status_message {
 
 /* PROGRESSBAR */
 QProgressBar#progress_bar {
+    color: #B3ffffff;
     background-color: #2c313e;
     border: 0px solid #0099CC;
     border-bottom-right-radius: 5px;
@@ -168,6 +174,8 @@ QListView {
 QTreeView {
     selection-background-color: #0099CC;
 }
+
+
 
 QListWidget:item:selected:!active {
     background: gray;
@@ -242,6 +250,16 @@ QComboBox::hover {
     border: 1px solid #0099CC;
 }
 
+QLineEdit {
+    border: 1px solid rgb(54, 61, 83);
+    border-radius: 0px;
+    padding: 1px 18px 1px 3px;
+    min-width: 6em;
+}
+
+QLineEdit::hover {
+    border: 1px solid #0099CC;
+}
 
 /* FIX: CHECKBOX BACKGROUND */
 

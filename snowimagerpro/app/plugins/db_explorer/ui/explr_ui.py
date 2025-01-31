@@ -92,6 +92,32 @@ class Ui_Form(object):
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, -1)
+        self.cb_update_coords_pix = QCheckBox(self.frame_2)
+        self.cb_update_coords_pix.setObjectName(u"cb_update_coords_pix")
+        self.cb_update_coords_pix.setLayoutDirection(Qt.RightToLeft)
+        self.cb_update_coords_pix.setTristate(True)
+
+        self.gridLayout.addWidget(self.cb_update_coords_pix, 2, 6, 1, 1)
+
+        self.label = QLabel(self.frame_2)
+        self.label.setObjectName(u"label")
+        self.label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout.addWidget(self.label, 2, 0, 1, 1)
+
+        self.cb_update_ROIs = QCheckBox(self.frame_2)
+        self.cb_update_ROIs.setObjectName(u"cb_update_ROIs")
+        self.cb_update_ROIs.setLayoutDirection(Qt.RightToLeft)
+        self.cb_update_ROIs.setTristate(True)
+
+        self.gridLayout.addWidget(self.cb_update_ROIs, 2, 4, 1, 1)
+
+        self.le_filepath = QLineEdit(self.frame_2)
+        self.le_filepath.setObjectName(u"le_filepath")
+        self.le_filepath.setReadOnly(True)
+
+        self.gridLayout.addWidget(self.le_filepath, 2, 1, 1, 3)
+
         self.frame_3 = QFrame(self.frame_2)
         self.frame_3.setObjectName(u"frame_3")
         self.frame_3.setFrameShape(QFrame.Box)
@@ -111,37 +137,7 @@ class Ui_Form(object):
         self.horizontalLayout_2.addWidget(self.graphWidget)
 
 
-        self.gridLayout.addWidget(self.frame_3, 4, 2, 3, 4)
-
-        self.verticalSpacer = QSpacerItem(20, 5, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
-
-        self.gridLayout.addItem(self.verticalSpacer, 0, 0, 1, 6)
-
-        self.le_filepath = QLineEdit(self.frame_2)
-        self.le_filepath.setObjectName(u"le_filepath")
-        self.le_filepath.setReadOnly(True)
-
-        self.gridLayout.addWidget(self.le_filepath, 2, 1, 1, 3)
-
-        self.label = QLabel(self.frame_2)
-        self.label.setObjectName(u"label")
-        self.label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout.addWidget(self.label, 2, 0, 1, 1)
-
-        self.cb_update_coords_pix = QCheckBox(self.frame_2)
-        self.cb_update_coords_pix.setObjectName(u"cb_update_coords_pix")
-        self.cb_update_coords_pix.setLayoutDirection(Qt.RightToLeft)
-        self.cb_update_coords_pix.setTristate(True)
-
-        self.gridLayout.addWidget(self.cb_update_coords_pix, 2, 5, 1, 1)
-
-        self.cb_update_ROIs = QCheckBox(self.frame_2)
-        self.cb_update_ROIs.setObjectName(u"cb_update_ROIs")
-        self.cb_update_ROIs.setLayoutDirection(Qt.RightToLeft)
-        self.cb_update_ROIs.setTristate(True)
-
-        self.gridLayout.addWidget(self.cb_update_ROIs, 2, 4, 1, 1)
+        self.gridLayout.addWidget(self.frame_3, 4, 2, 3, 5)
 
         self.verticalSpacer_3 = QSpacerItem(20, 4, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
 
@@ -303,12 +299,20 @@ class Ui_Form(object):
 
         self.gridLayout.addWidget(self.details, 3, 0, 4, 2)
 
+        self.verticalSpacer = QSpacerItem(20, 5, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.gridLayout.addItem(self.verticalSpacer, 0, 0, 1, 7)
+
+        self.horizontalSpacer = QSpacerItem(10, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer, 2, 5, 1, 1)
+
         self.gridLayout.setRowStretch(1, 1)
         self.gridLayout.setColumnStretch(1, 4)
         self.gridLayout.setColumnStretch(2, 1)
         self.gridLayout.setColumnStretch(3, 1)
         self.gridLayout.setColumnStretch(4, 1)
-        self.gridLayout.setColumnStretch(5, 1)
+        self.gridLayout.setColumnStretch(6, 1)
 
         self.verticalLayout_2.addLayout(self.gridLayout)
 
@@ -331,8 +335,8 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.btn_chang_data_dir.setText(QCoreApplication.translate("Form", u"...", None))
-        self.label.setText(QCoreApplication.translate("Form", u"filename ", None))
         self.cb_update_coords_pix.setText(QCoreApplication.translate("Form", u"Coords_pix", None))
+        self.label.setText(QCoreApplication.translate("Form", u"filename ", None))
         self.cb_update_ROIs.setText(QCoreApplication.translate("Form", u"ROIs", None))
         self.details.setTitle("")
         self.label_11.setText(QCoreApplication.translate("Form", u"Coords pix", None))
