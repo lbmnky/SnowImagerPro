@@ -17,6 +17,7 @@
 #
 
 import re
+from pathlib import Path
 
 from PySide6.QtWidgets import (
     QMessageBox,
@@ -33,12 +34,19 @@ def show_warning(*args):
 
 def select_folders(*args):
 
-    def fv_double_clicked(index):
-        dlg.selectFile("")
-
     dlg = QFileDialog(*args)
     dlg.setFileMode(QFileDialog.Directory)
     dlg.setOption(QFileDialog.DontUseNativeDialog, True)
+
+    # TODO: Toggle selection mode based on selection, to allow adding folders or files
+    #def toggle_file_mode(info):
+    #    print(info)
+    #    if info.isFile():
+    #        dlg.setFileMode(QFileDialog.ExistingFiles)
+    #    elif info.isDir():
+    #        dlg.setFileMode(QFileDialog.Directory)
+    #dlg.currentChanged.connect(toggle_file_mode)
+
     file_view = dlg.findChild(QListView, "listView")
 
     if file_view:
@@ -49,16 +57,22 @@ def select_folders(*args):
     if f_tree_view:
         f_tree_view.setSelectionMode(QAbstractItemView.MultiSelection)
 
-    # TODO: Eliminate parent folder element from dlg.selectedFiles() list more elegantly
-    # FIX below
     if dlg.exec():
         selected = dlg.selectedFiles()
-        if len(selected) == 1:
-            return selected[0]
-        elif len(selected) > 1:
+
+        # Return files only if any files are selected
+        if any(Path(s).is_file() for s in selected):
+            selected = [s for s in selected if Path(s).is_file()]
+            return selected, None
+
+        # return list of folders otherwise
+        # need to return first/parent folder # TODO: Fix this?
+        if len(selected) > 1:
             for s in selected:
-                print(s.split("/")[-1])
-                if not re.match(r"\d{4}-\d{2}-\d{2}*", s.split("/")[-1]):
+                if not re.match(r"\d{4}-\d{2}-\d{2}", Path(s).stem): # WHAT IF FILENAME FORMAT CHANGES? # TODO: check Win/Mac
                     selected.remove(s)
 
-        return dlg.selectedFiles()[1:]
+        # Otherwise return the one selected folder
+        return None, selected
+
+    return None, None

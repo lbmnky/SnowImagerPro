@@ -50,12 +50,13 @@ from .viewr import Viewr, getFileName, yes_no_warning
 
 
 def add_images_to_db():
-    folders = select_folders(
+    files, folders = select_folders(
         None,
         "Select image directories",
     )
-
-    logic.add_images_to_db(folders)
+    print("files", files)
+    print("folders", folders)
+    logic.add_images_to_db(files, folders)
 
 def remove_image_from_db():
     indices = view.explr._ui.listView.selectionModel().selectedRows()

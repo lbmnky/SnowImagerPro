@@ -63,30 +63,37 @@ class Logic(LogicBase):
     def do_new_update(self):
         print("RUNNING: do_new_update in db_explorer (logic)")
 
-    def add_images_to_db(self, folders):
-        files = []
+    def add_images_to_db(self, files_in, folders):
+        files_out = []
         exts = [".BAY", ".dng"]
 
-        if folders is None:
-            return
+        if files_in is not None:
+            files_in = sorted(files_in)
 
-        folders = sorted(folders)
-
-        for folder in folders:
             for ext in exts:
-                for path in Path(folder).rglob(f"*{ext}", case_sensitive=False):
-                    files.append(str(path))
+                for file in files_in:
+                    if file.endswith(ext.lower()):
+                        files_out.append(file)
 
-            print("Found", len(files), "images with extension", ext)
+        if folders is not None:
 
-        files = sorted(files)
+            folders = sorted(folders)
 
-        print("Adding images to db", files)
+            for folder in folders:
+                for ext in exts:
+                    for path in Path(folder).rglob(f"*{ext}", case_sensitive=False):
+                        files_out.append(str(path))
+
+            print("Found", len(files_out), "images with extension", ext)
+
+        files_out = sorted(files_out)
+
+        print("Adding images to db", files_out)
 
         curr_drk = -1
         curr_ref = 1
 
-        for i, filepath in enumerate(files):
+        for i, filepath in enumerate(files_out):
             uuid = helper.create_uuid()
             meta = ImageMetadata()
 
