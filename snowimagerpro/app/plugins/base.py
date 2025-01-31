@@ -138,8 +138,21 @@ def getOpenFileName(*args):
 
 def getSaveFileName(*args):
     fp = QFileDialog.getSaveFileName(*args)
+    if fp[0] == "":
+        return None
     return fp[0]
 
+
+# TODO: Gotta check this on Mac
+def getSaveFileNameMod(*args, custom_file_name=None):
+    dlg = QFileDialog(*args)
+    dlg.setAcceptMode(QFileDialog.AcceptSave)
+    dlg.setOption(QFileDialog.DontUseNativeDialog, True)
+    if custom_file_name:
+        dlg.layout().itemAt(4).widget().setText(custom_file_name)
+    if dlg.exec() == QFileDialog.Accepted:
+        return dlg.selectedFiles()[0]
+    return None
 
 def getFileName(*args):
     dlg = QFileDialog(*args)

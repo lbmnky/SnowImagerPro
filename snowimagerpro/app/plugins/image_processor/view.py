@@ -16,8 +16,11 @@
 # this program. If not, see <https://www.gnu.org/licenses/>.
 #
 
+from pathlib import Path
+from datetime import datetime
+
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QFileDialog, QListWidgetItem, QMenu, QWidget
+from PySide6.QtWidgets import QListWidgetItem, QMenu, QWidget, QFileDialog
 
 from snowimagerpro.app.managers import user_config
 from snowimagerpro.app.managers.paths import paths
@@ -27,7 +30,7 @@ from .logic import logic
 from .model import model
 from .ui.ctrls_ui import Ui_Form as ctrls_ui
 from .ui.explr_ui import Ui_Form as explr_ui
-from .viewr import getOpenFileName, show_warning
+from .viewr import getOpenFileName, show_warning, getSaveFileNameMod, yes_no_warning
 
 
 class View(ViewBase):
@@ -143,12 +146,46 @@ class Ctrls(QWidget):
 
     def on_btn_save_clicked(self):
         if hasattr(model.public.img_set, "stitched_image"):
-            folder = QFileDialog.getExistingDirectory(
-                self,
-                "Select Directory",
-            )
-            if folder is not None:
-                logic.save(folder=folder)
+
+            dtime = datetime.now().strftime("%Y%m%d_%H%M")
+            date = model.public.img_set.stitched_image["ngr"]._meta["date"]
+            location = model.public.img_set.stitched_image["ngr"]._meta["location"]
+
+
+            h5_path = user_config.get("processor.h5_path")
+
+            if Path(h5_path).exists():
+                fn = Path(h5_path) / Path(f"{date}_{location}") / Path(f"processedOn_{dtime}.h5") # TODO: how to write path/filename.ext into the input field of QFileDialog?
+                #fn = Path(h5_path) / Path(f"processedOn_{dtime}.h5")
+            else:
+                fn = Path("~/processedOn_{dtime}.h5").expanduser()
+
+            folder = fn.parent
+            #if not folder.exists():
+            #    folder.mkdir(parents=True)
+            #    dir_created = True
+            #else:
+            #    dir_created = False
+
+            print(folder)
+            print(type(folder))
+
+
+            if folder.exists():
+                fp = getSaveFileNameMod(None, "Save File", str(fn), "Image Files (*.h5)")
+            else:
+                custom_file_name = f"{date}_{location}/processedOn_{dtime}.h5"
+                fp = getSaveFileNameMod(None, "Save File", h5_path, "Image Files (*.h5)", custom_file_name=custom_file_name)
+
+            if fp is None:
+                return
+
+            fp = Path(fp)
+            folder = fp.parent
+
+
+            logic.save(fp=fp, folder=folder)
+
         else:
             show_warning(None, "Error", "No stitched image available")
 

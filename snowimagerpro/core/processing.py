@@ -367,20 +367,38 @@ class ImageSet:
 
             wavelengths = set()
             px2mms = set()
+            dates = set()
+            locations = set()
+
             for _meta in meta:
                 # key = _meta[0]
                 _meta[1]["filepath"] = str(_meta[1]["filepath"])
                 wavelengths.add(_meta[1]["wavelength"])
                 px2mms.add(_meta[1]["px_2_mm"])
+                if _meta[1]["img_type"] != "ref":
+                    dates.add(_meta[1]["date"])
+                locations.add(_meta[1]["location"])
 
             if len(wavelengths) > 1:
                 print("Error: multiple wavelengths in stitched image.")
             else:
                 wavelength = next(iter(wavelengths))
+
             if len(px2mms) > 1:
                 print("Error: multiple px2mm in stitched image.")
             else:
                 px2mm = next(iter(px2mms))
+
+            if len(dates) > 1:
+                print("Error: multiple dates in stitched image.")
+            else:
+                date = next(iter(dates))
+
+            if len(locations) > 1:
+                print("Error: multiple locations in stitched image.")
+            else:
+                location = next(iter(locations))
+
 
             stitched_image = Image()
             stitched_image._data = image
@@ -388,6 +406,8 @@ class ImageSet:
             stitched_image._meta["img_type"] = _img_type
             stitched_image._meta["px_2_mm"] = px2mm
             stitched_image._meta["wavelength"] = wavelength
+            stitched_image._meta["date"] = date
+            stitched_image._meta["location"] = location
 
             stitched_image._meta["orig_meta"] = deepcopy(meta)
 
@@ -399,10 +419,10 @@ class ImageSet:
         # TODO: add group [_img_type][_grp] for optional col-major or row-major blending
         # TODO: If col/row-major blending perform here
 
-    def save_as_h5(self, folder=None):
+    def save_as_h5(self, fp=None, folder=None):
         for key, img in self.stitched_image.items():
             print(f"Saving image {key} to h5.")
-            fn = img.save_as(folder)
+            fn = img.save_as(fp, folder)
 
         return fn
 
@@ -590,7 +610,7 @@ class Image:
         else:
             logging.warning("Serial number does not match calibration data.")
 
-    def save_as(self, folder=None, filetype="h5"):
+    def save_as(self, fp=None, folder=None, filetype="h5"):
         if filetype.lower() in ["h5", "hdf5"]:
             exif = self._exif[-1][1]
             orig_meta = self._meta["orig_meta"][-1][1]
@@ -600,17 +620,21 @@ class Image:
             date = orig_meta["date"]
             location = orig_meta["location"]
 
-            dtime = datetime.now().strftime("%Y%m%d_%H%M")
-
-            fn = f"{date}_{location}/processedOn_{dtime}.h5"
-
-            if not folder:
-                output_file = Path("tests/data/test_out/" + fn)
+            if fp is not None:
+                fn = fp
             else:
-                if isinstance(folder, str):
-                    output_file = Path(folder) / Path(fn)
-                else:
-                    output_file = folder / Path(fn)
+                dtime = datetime.now().strftime("%Y%m%d_%H%M")
+                fn = f"{date}_{location}/processedOn_{dtime}.h5"
+
+            #if not folder:
+            #    output_file = Path("tests/data/test_out/" + fn)
+            #else:
+            #if isinstance(folder, str):
+            #    output_file = Path(folder) / Path(fn)
+            #else:
+            #    output_file = folder / Path(fn)
+
+            output_file = Path(fn)
 
             output_file.parent.mkdir(exist_ok=True, parents=True)
 

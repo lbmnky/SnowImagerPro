@@ -36,9 +36,9 @@ import snowimagerpro.core as sipro_core
 from snowimagerpro.app.managers import user_config
 from snowimagerpro.core.methods import helper
 
-from ..base import ViewrBase, getOpenFileName, getSaveFileName, show_warning
+from ..base import ViewrBase, getOpenFileName, getSaveFileName, getSaveFileNameMod, show_warning, yes_no_warning
 
-__all__ = ["Viewr", "getOpenFileName", "getSaveFileName", "show_warning"]
+__all__ = ["Viewr", "getOpenFileName", "getSaveFileName", "getSaveFileNameMod", "show_warning", "yes_no_warning"]
 
 
 class Viewr(ViewrBase, pg.LayoutWidget):
