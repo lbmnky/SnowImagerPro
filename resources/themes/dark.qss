@@ -261,10 +261,37 @@ QLineEdit::hover {
     border: 1px solid #0099CC;
 }
 
+QSpinBox,
+QDoubleSpinBox {
+    border: 1px solid rgb(54, 61, 83);
+}
+
+QSpinBox::up-button,
+QDoubleSpinBox::up-button {
+    subcontrol-origin: border;
+    subcontrol-position: right; /* position at the top right corner */
+
+    width: 10px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
+    height: 10px;
+    border-image: url(resources/icons/plus.svg) 1;
+    border-width: 1px;
+}
+
+QSpinBox::down-button,
+QDoubleSpinBox::down-button {
+    subcontrol-origin: border;
+    subcontrol-position: right; /* position at the bottom right corner */
+    margin-right: 11px;
+    width: 10px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
+    height: 10px;
+    border-image: url(resources/icons/minus.svg) 1;
+    border-width: 1px;
+}
+
 /* FIX: CHECKBOX BACKGROUND */
 
 QCheckBox::indicator {
-    border: 1px solid #0099CC;
+    border: 1px solid #0099CC;padding
 }
 
 QCheckBox::indicator:checked {

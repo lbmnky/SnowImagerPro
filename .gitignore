@@ -110,6 +110,7 @@ light.qss
 resources/workflows/testing/*
 resources/workflows/user/*
 *.template
+TODO.md
 
 # VS Code
 .vscode/
