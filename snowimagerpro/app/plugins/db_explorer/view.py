@@ -32,6 +32,8 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+from snowimagerpro.app.popups import select_folders
+
 from snowimagerpro.app.managers.paths import paths
 from snowimagerpro.app.managers.settings import user_config
 from snowimagerpro.app.plugins.base import ViewBase
@@ -45,14 +47,15 @@ from .ui.explr_ui import Ui_Form as explr_ui
 from .viewr import Viewr, getFileName, yes_no_warning
 
 
+
+
 def add_images_to_db():
-    folder = QFileDialog.getExistingDirectory(
-        parent=None,
-        caption="Select an image directory",
+    folders = select_folders(
+        None,
+        "Select image directories",
     )
 
-    logic.add_images_to_db(folder)
-
+    logic.add_images_to_db(folders)
 
 def remove_image_from_db():
     indices = view.explr._ui.listView.selectionModel().selectedRows()

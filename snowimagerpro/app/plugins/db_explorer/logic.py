@@ -62,12 +62,19 @@ class Logic(LogicBase):
     def do_new_update(self):
         print("RUNNING: do_new_update in db_explorer (logic)")
 
-    def add_images_to_db(self, folder):
+    def add_images_to_db(self, folders):
         files = []
         exts = [".BAY", ".dng"]
-        for ext in exts:
-            for path in Path(folder).rglob(f"*{ext}", case_sensitive=False):
-                files.append(str(path))
+
+        if folders is None:
+            return
+
+        folders = sorted(folders)
+
+        for folder in folders:
+            for ext in exts:
+                for path in Path(folder).rglob(f"*{ext}", case_sensitive=False):
+                    files.append(str(path))
 
             print("Found", len(files), "images with extension", ext)
 
