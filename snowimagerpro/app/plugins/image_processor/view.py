@@ -216,17 +216,17 @@ class Explr(QWidget):
         self._ui.listWidget_ref_images.focusInEvent = self.listWidget_ref_focusInEvent
 
         # on double click show image
-        self._ui.listWidget_nogrid_images.itemDoubleClicked.connect(
-            self.on_listWidget_itemDoubleClicked
-        )
-        self._ui.listWidget_grid_images.itemDoubleClicked.connect(
-            self.on_listWidget_itemDoubleClicked
-        )
-        self._ui.listWidget_ref_images.itemDoubleClicked.connect(
-            self.on_listWidget_itemDoubleClicked
-        )
+        #self._ui.listWidget_nogrid_images.itemDoubleClicked.connect(
+        #    self.on_listWidget_itemDoubleClicked
+        #)
+        #self._ui.listWidget_grid_images.itemDoubleClicked.connect(
+        #    self.on_listWidget_itemDoubleClicked
+        #)
+        #self._ui.listWidget_ref_images.itemDoubleClicked.connect(
+        #    self.on_listWidget_itemDoubleClicked
+        #)
 
-        # on enter click show image
+        # on enter and doubleclick show image
         self._ui.listWidget_nogrid_images.activated.connect(
             self.on_listWidget_itemDoubleClicked
         )
