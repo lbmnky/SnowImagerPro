@@ -146,26 +146,11 @@ class Ctrls(QWidget):
 
     def on_btn_save_clicked(self):
         if hasattr(model.public.img_set, "stitched_image"):
-            #folder = QFileDialog.getExistingDirectory(
-            #    self,
-            #    "Select Directory",
-            #)
-            #dlg = QFileDialog()
-            #dlg.setOption(QFileDialog.DontUseNativeDialog)
-            #print(dir(dlg.layout()))
-#
-#
-            #print(dir(dlg.layout().itemAt(4)))
-            #print(dlg.layout().itemAt(4).__class__)
-            #print(dir(dlg.layout().itemAt(4).widget()))
-            #dlg.layout().itemAt(4).widget().setText("HEHEHEH")
-            #dlg.exec()
 
             dtime = datetime.now().strftime("%Y%m%d_%H%M")
-            #date = model.public.img_set.stitched_image.
+            date = model.public.img_set.stitched_image["ngr"]._meta["date"]
+            location = model.public.img_set.stitched_image["ngr"]._meta["location"]
 
-            date = "blaDate"
-            location = "blaLocation"
 
             h5_path = user_config.get("processor.h5_path")
 

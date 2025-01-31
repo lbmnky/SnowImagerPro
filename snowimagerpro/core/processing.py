@@ -367,20 +367,38 @@ class ImageSet:
 
             wavelengths = set()
             px2mms = set()
+            dates = set()
+            locations = set()
+
             for _meta in meta:
                 # key = _meta[0]
                 _meta[1]["filepath"] = str(_meta[1]["filepath"])
                 wavelengths.add(_meta[1]["wavelength"])
                 px2mms.add(_meta[1]["px_2_mm"])
+                if _meta[1]["img_type"] != "ref":
+                    dates.add(_meta[1]["date"])
+                locations.add(_meta[1]["location"])
 
             if len(wavelengths) > 1:
                 print("Error: multiple wavelengths in stitched image.")
             else:
                 wavelength = next(iter(wavelengths))
+
             if len(px2mms) > 1:
                 print("Error: multiple px2mm in stitched image.")
             else:
                 px2mm = next(iter(px2mms))
+
+            if len(dates) > 1:
+                print("Error: multiple dates in stitched image.")
+            else:
+                date = next(iter(dates))
+
+            if len(locations) > 1:
+                print("Error: multiple locations in stitched image.")
+            else:
+                location = next(iter(locations))
+
 
             stitched_image = Image()
             stitched_image._data = image
@@ -388,6 +406,8 @@ class ImageSet:
             stitched_image._meta["img_type"] = _img_type
             stitched_image._meta["px_2_mm"] = px2mm
             stitched_image._meta["wavelength"] = wavelength
+            stitched_image._meta["date"] = date
+            stitched_image._meta["location"] = location
 
             stitched_image._meta["orig_meta"] = deepcopy(meta)
 
