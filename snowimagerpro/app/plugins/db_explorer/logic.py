@@ -29,6 +29,7 @@ from snowimagerpro.core.methods import helper
 from ..base import LogicBase, public_data
 from .model import model
 from .viewr import getSaveFileName, show_warning
+import re
 
 
 def focus_list(func):
@@ -82,12 +83,40 @@ class Logic(LogicBase):
 
         print("Adding images to db", files)
 
-        for filepath in files:
+        curr_drk = -1
+        curr_ref = 1
+
+        for i, filepath in enumerate(files):
             uuid = helper.create_uuid()
             meta = ImageMetadata()
 
             meta.ID = uuid
             meta.filepath = filepath
+
+            if i % 2 == 0:
+                curr_drk += 1
+            meta.drk_group = curr_drk
+
+            if i % 2 == 0:
+                if curr_ref == 1:
+                    curr_ref = 0
+                else:
+                    curr_ref = 1
+            meta.ref_group = curr_ref
+
+            filename = Path(filepath).name
+            wl = 0
+            if "dark" in filename.lower():
+                wl = 0
+            elif match := re.search(r'\d{3}nm', filename):
+                wl = int(match.group()[:-2])
+
+            meta.wavelength = wl
+
+            date_match = re.search(r'\d{4}-\d{2}-\d{2}', filename)
+            if date_match:
+                meta.date = date_match.group()
+
 
             model.public.img_set._image_db[uuid] = meta
 
