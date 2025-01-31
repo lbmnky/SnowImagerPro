@@ -29,6 +29,7 @@ from snowimagerpro.core.methods import helper
 from ..base import LogicBase, public_data
 from .model import model
 from .viewr import getSaveFileName, show_warning
+import re
 
 
 def focus_list(func):
@@ -62,25 +63,67 @@ class Logic(LogicBase):
     def do_new_update(self):
         print("RUNNING: do_new_update in db_explorer (logic)")
 
-    def add_images_to_db(self, folder):
-        files = []
+    def add_images_to_db(self, files_in, folders):
+        files_out = []
         exts = [".BAY", ".dng"]
-        for ext in exts:
-            for path in Path(folder).rglob(f"*{ext}", case_sensitive=False):
-                files.append(str(path))
 
-            print("Found", len(files), "images with extension", ext)
+        if files_in is not None:
+            files_in = sorted(files_in)
 
-        files = sorted(files)
+            for ext in exts:
+                for file in files_in:
+                    if file.endswith(ext.lower()):
+                        files_out.append(file)
 
-        print("Adding images to db", files)
+        if folders is not None:
 
-        for filepath in files:
+            folders = sorted(folders)
+
+            for folder in folders:
+                for ext in exts:
+                    for path in Path(folder).rglob(f"*{ext}", case_sensitive=False):
+                        files_out.append(str(path))
+
+            print("Found", len(files_out), "images with extension", ext)
+
+        files_out = sorted(files_out)
+
+        print("Adding images to db", files_out)
+
+        curr_drk = -1
+        curr_ref = 1
+
+        for i, filepath in enumerate(files_out):
             uuid = helper.create_uuid()
             meta = ImageMetadata()
 
             meta.ID = uuid
             meta.filepath = filepath
+
+            if i % 2 == 0:
+                curr_drk += 1
+            meta.drk_group = curr_drk
+
+            if i % 2 == 0:
+                if curr_ref == 1:
+                    curr_ref = 0
+                else:
+                    curr_ref = 1
+            meta.ref_group = curr_ref
+
+            filename = Path(filepath).name
+            wl = 0
+            if "dark" in filename.lower():
+                wl = 0
+            elif match := re.search(r'\d{3}nm', filename):
+                wl = int(match.group()[:-2])
+
+            meta.wavelength = wl
+
+            date_match = re.search(r'\d{4}-\d{2}-\d{2}', filename)
+            if date_match:
+                meta.date = date_match.group()
+
 
             model.public.img_set._image_db[uuid] = meta
 
