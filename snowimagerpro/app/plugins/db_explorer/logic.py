@@ -130,7 +130,7 @@ class Logic(LogicBase):
             else:
                 meta.ROI = DEFAULT_ROI_BOTTOM
 
-            meta.px_2_mm = 0.3
+            meta.px_2_mm = 0.3150768271878
 
             model.public.img_set._image_db[uuid] = meta
 

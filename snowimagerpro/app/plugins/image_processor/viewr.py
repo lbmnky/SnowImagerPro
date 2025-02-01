@@ -92,6 +92,22 @@ class Viewr(ViewrBase, pg.LayoutWidget):
 
         self.px_2_mm = meta["px_2_mm"]
 
+        coords_pix = meta["coords_pix"]
+        coords_mm = meta["coords_mm"]
+
+        img_size = sipro_core.methods.get_img_size(image)
+
+        pix_pos = [coords_pix[0] * img_size[0], coords_pix[1] * img_size[1]]
+        print("pix pos", pix_pos)
+        mm_pos = [coords_mm[0], coords_mm[1]]
+        print("mm pos", mm_pos)
+        print("scale", scale)
+
+        origin_mm = [0, coords_mm[1] - (img_size[1]-pix_pos[1])*scale]
+
+        self.origin_mm = origin_mm
+        print(self.origin_mm, "orig mm")
+
         meta_table = QTableView()
         model = MetadataTableModel(meta)
         model.dataChanged.connect(self.update_meta)
@@ -123,9 +139,18 @@ class Viewr(ViewrBase, pg.LayoutWidget):
         """Plot image value at mouse position to label."""
 
         data = self.img.T
+        img_size = sipro_core.methods.get_img_size(self.image)
 
         scenePos = self.imv.getImageItem().mapFromScene(pos)
         y, x = int(scenePos.y()), int(scenePos.x())
+
+        offset = self.coords_pix_handle.pos()
+        coords_mm = self.image._meta["coords_mm"]
+
+        h = (x-offset[0]) * self.px_2_mm + coords_mm[0] #+ self.origin_mm[0]
+        #v = (img_size[1] - y) * self.px_2_mm + self.origin_mm[1]
+        v = (y-offset[1]) * self.px_2_mm + coords_mm[1] #- self.origin_mm[1]
+
 
         if len(data.shape) == 3:
             _, nCols, nRows = data.shape
@@ -145,7 +170,7 @@ class Viewr(ViewrBase, pg.LayoutWidget):
         else:
             z = "Not supported"
 
-        self.label.setText(f"Pos: {x, y} | Value: {z}")
+        self.label.setText(f"Pix: {x, y} | Pos: {h:.2f}, {v:.2f} | Value: {z}")
 
     def add_coords_pix(self, coords, img, color="g"):
         img_size = sipro_core.methods.get_img_size(img)

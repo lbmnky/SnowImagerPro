@@ -332,8 +332,10 @@ class ImageSet:
             print("No images to stitch.")
             return
 
-        imgs = pro.coords_mm_to_pix(imgs)
         sorted_images = pro.image_sorting(imgs)  #
+
+        for _group in sorted_images.values():
+            _group = pro.coords_mm_to_pix(_group)
 
         self.stitched_image = {}
 
