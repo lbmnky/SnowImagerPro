@@ -259,7 +259,7 @@ def shift_x(M, dx):
     return M
 
 
-def _coords_mm_to_pix(images):
+def coords_mm_to_pix_OBSOLETE(images):
     """Use image coordinates to position (not place) images on super-image.
 
     Write position to img._pos
