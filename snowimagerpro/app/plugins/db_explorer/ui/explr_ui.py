@@ -225,8 +225,9 @@ class Ui_Form(object):
 
         self.dsb_px2mm = QDoubleSpinBox(self.details)
         self.dsb_px2mm.setObjectName(u"dsb_px2mm")
-        self.dsb_px2mm.setSingleStep(0.010000000000000)
-        self.dsb_px2mm.setValue(0.200000000000000)
+        self.dsb_px2mm.setDecimals(4)
+        self.dsb_px2mm.setSingleStep(0.000100000000000)
+        self.dsb_px2mm.setValue(0.315000000000000)
 
         self.gridLayout_2.addWidget(self.dsb_px2mm, 4, 2, 1, 1)
 

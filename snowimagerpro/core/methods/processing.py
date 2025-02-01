@@ -259,7 +259,7 @@ def shift_x(M, dx):
     return M
 
 
-def coords_mm_to_pix(images):
+def _coords_mm_to_pix(images):
     """Use image coordinates to position (not place) images on super-image.
 
     Write position to img._pos
@@ -297,6 +297,57 @@ def coords_mm_to_pix(images):
 
     return images
 
+def coords_mm_to_pix(images):
+
+    """
+
+  (x_0,y_0)
+    +----------------------------------+
+    |                                  |
+    |                                  |
+    |                                  |
+    |                                  |
+    |                                  |
+    |       (x,y)                      |
+    |      +                           |
+    |                                  |
+    +----------------------------------+
+
+    (x_0, y_0) : origin
+    (x, y) : reference position
+
+    return origin in mm
+
+    """
+
+    offset = [10000, 10000]
+
+    for img in images.values():
+        img_size = get_img_size(img)
+        print("image size", img_size)
+        pix_pos = [int(a * b) for a, b in zip(img._meta.coords_pix, img_size)]
+        print("pix_pos", pix_pos)
+        mm_pos = img._meta.coords_mm
+        print("mm_pos", mm_pos)
+        scale = img._meta.px_2_mm
+        print("scale", scale)
+
+        #origin_mm = [int(0), int(mm_pos[1] - (img_size[1] - pix_pos[1]) * scale)]
+        origin_mm = [float(0), float(mm_pos[1] + (pix_pos[1]) * scale)]
+
+        print("origin_mm", origin_mm)
+
+        if origin_mm[0] < offset[0]:
+            offset[0] = origin_mm[0]
+        if origin_mm[1] < offset[1]:
+            offset[1] = origin_mm[1]
+
+        img._pos = origin_mm
+
+    for img in images.values():
+        img._pos = [img._pos[0] - offset[0], img._pos[1] - offset[1]]
+
+    return images
 
 def image_sorting(images):
     _out = {
@@ -531,7 +582,14 @@ def image_blending_laplPyr(images, sigmaX=100, sigmaY=100) -> np.ndarray:
     masks = []
 
     for i, _img in enumerate(images.values()):
-        dx, dy = _img._pos
+        dx_mm, dy_mm = _img._pos
+        scale = _img._meta.px_2_mm
+        dx = int(dx_mm / scale)
+        dy = -int(dy_mm / scale)
+
+        print(_img._meta.filepath)
+        print("dx_mm, dy_mm", dx_mm, dy_mm)
+        print("dx, dy", dx, dy)
 
         t = time.time()
         _data, image = image_registration(_img._data, image, dx, dy)
