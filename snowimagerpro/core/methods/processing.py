@@ -302,16 +302,13 @@ def coords_mm_to_pix(images):
     """
 
     (x_0,y_0)
-      +----------------------------------+
-      |                                  |
-      |                                  |
-      |                                  |
-      |                                  |
-      |                                  |
-      |       (x,y)                      |
-      |      +                           |
-      |                                  |
-      +----------------------------------+
+      +---------------------+
+      |                     |
+      |                     |
+      |       (x,y)         |
+      |      +              |
+      |                     |
+      +---------------------+
 
       (x_0, y_0) : origin
       (x, y) : reference position
@@ -320,24 +317,18 @@ def coords_mm_to_pix(images):
 
     """
 
-    offset = [10000, 10000]
+    offset = [10000.0, 10000.0]
 
     for img in images.values():
         img_size = get_img_size(img)
-        print("image size", img_size)
         pix_pos = [int(a * b) for a, b in zip(img._meta.coords_pix, img_size)]
-        print("pix_pos", pix_pos)
         mm_pos = img._meta.coords_mm
-        print("mm_pos", mm_pos)
         scale = img._meta.px_2_mm
-        print("scale", scale)
 
         origin_mm = [
             float(mm_pos[0] + pix_pos[0] * scale),
             float(mm_pos[1] + pix_pos[1] * scale),
         ]
-
-        print("origin_mm", origin_mm)
 
         if origin_mm[0] < offset[0]:
             offset[0] = origin_mm[0]
