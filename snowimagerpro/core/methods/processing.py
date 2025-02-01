@@ -297,26 +297,26 @@ def _coords_mm_to_pix(images):
 
     return images
 
-def coords_mm_to_pix(images):
 
+def coords_mm_to_pix(images):
     """
 
-  (x_0,y_0)
-    +----------------------------------+
-    |                                  |
-    |                                  |
-    |                                  |
-    |                                  |
-    |                                  |
-    |       (x,y)                      |
-    |      +                           |
-    |                                  |
-    +----------------------------------+
+    (x_0,y_0)
+      +----------------------------------+
+      |                                  |
+      |                                  |
+      |                                  |
+      |                                  |
+      |                                  |
+      |       (x,y)                      |
+      |      +                           |
+      |                                  |
+      +----------------------------------+
 
-    (x_0, y_0) : origin
-    (x, y) : reference position
+      (x_0, y_0) : origin
+      (x, y) : reference position
 
-    return origin in mm
+      return origin in mm
 
     """
 
@@ -332,8 +332,10 @@ def coords_mm_to_pix(images):
         scale = img._meta.px_2_mm
         print("scale", scale)
 
-        #origin_mm = [int(0), int(mm_pos[1] - (img_size[1] - pix_pos[1]) * scale)]
-        origin_mm = [float(0), float(mm_pos[1] + (pix_pos[1]) * scale)]
+        origin_mm = [
+            float(mm_pos[0] + pix_pos[0] * scale),
+            float(mm_pos[1] + pix_pos[1] * scale),
+        ]
 
         print("origin_mm", origin_mm)
 
@@ -344,10 +346,12 @@ def coords_mm_to_pix(images):
 
         img._pos = origin_mm
 
+    # subtract smallest x,y position from all images
     for img in images.values():
         img._pos = [img._pos[0] - offset[0], img._pos[1] - offset[1]]
 
     return images
+
 
 def image_sorting(images):
     _out = {
