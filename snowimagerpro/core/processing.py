@@ -23,6 +23,7 @@ from copy import deepcopy
 from datetime import datetime
 from pathlib import Path
 from typing import Union
+import exifread
 
 import cv2 as cv
 import discorpy.post.postprocessing as post
@@ -108,6 +109,13 @@ class ImageSet:
         image_db = pro.load_db(db_path)
 
         image_db = helper.expand_db_by_meas_group(image_db)
+
+        for entry in image_db.values():
+            fp = entry.filepath
+            with open(fp, "rb") as f:
+                exif = exifread.process_file(f)
+            entry.exif = exif
+
         self._image_db = image_db
 
         self.generate_link_table()
