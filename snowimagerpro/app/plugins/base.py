@@ -47,7 +47,7 @@ class LogicBase(QObject):
 
     def remove_view(self, view):
         # assert self.views is not None
-        view.deleteLater()
+        view.close()
         self.views = [i for i in self.views if i != view]
         logging.info("Closed 1 view")
 
