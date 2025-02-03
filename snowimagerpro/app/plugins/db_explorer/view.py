@@ -298,6 +298,7 @@ class Explr(QWidget):
 
         self._ui.le_coords_mm.editingFinished.connect(self.do_update_coords_mm)
         self._ui.dsb_px2mm.editingFinished.connect(self.do_update_px2mm)
+        self._ui.cb_location.activated.connect(self.do_update_location)
 
         self._ui.cb_update_ROIs.stateChanged.connect(self.on_roi_cb_state_changed)
         self._ui.cb_update_coords_pix.stateChanged.connect(
@@ -390,6 +391,11 @@ class Explr(QWidget):
         val = self._ui.dsb_px2mm.value()
         uuids = self.get_selected_uuids()
         logic.update_px2mm(val, uuids)
+
+    def do_update_location(self, idx):
+        val = self._ui.cb_location.itemText(idx)
+        uuids = self.get_selected_uuids()
+        logic.update_location(val, uuids)
 
     def do_paste_metadata(self):
         selected = self._ui.listWidget.selectedItems()
