@@ -18,7 +18,7 @@
 
 from ast import literal_eval
 from pathlib import Path
-from typing import List
+from typing import List, Any
 
 from pydantic import BaseModel, ConfigDict, field_validator
 
@@ -158,6 +158,7 @@ class ImageMetadata(BaseModel):
     trafo_points: List[List[float]] = [[]]
     aux_data: str = "[]"
     comment: str = "_"
+    exif: Any = {}
 
     def __setitem__(self, key, value):
         setattr(self, key, value)

@@ -328,6 +328,24 @@ class Explr(QWidget):
         )
 
         self._ui.show_meta.setText(text)
+        self.show_exif(uuid)
+
+    def show_exif(self, uuid):
+        exif = model.public.img_set._image_db[uuid].exif
+
+        text = (
+            f"Type: {exif['Image ImageDescription']}\n"
+            f"Author: {exif['Image Make']}\n"
+            f"Exposure time: {exif['Image ExposureTime']}\n"
+            f"Iso: {exif['Image ISOSpeedRatings']}\n"
+            f"Date: {exif['Image DateTimeOriginal']}\n"
+            f"Serial number: {exif['Image BodySerialNumber']}\n"
+            f"Black Level: {exif['Image BlackLevel']}\n"
+            f"Width: {exif['Image ImageWidth']}, Length {exif['Image ImageLength']}\n"
+            f"Bits per sample: {exif['Image BitsPerSample']}\n"
+        )
+        self._ui.show_exif.setText(text)
+
 
     def on_listWidget_itemDoubleClicked(self, item):
         uuid = item.data(Qt.ItemDataRole.UserRole)
