@@ -157,22 +157,26 @@ class PublicDataModel:
     def select_images(self, indices):
         ## TODO: Move to image processor
 
-        self.uuids_selected = []
+        self.uuids_selected = set()
 
         for index in indices:
             if index.data(role=0x0100):
-                self.uuids_selected.append(index.data(role=0x0100))
+                #self.uuids_selected.append(index.data(role=0x0100))
+                self.uuids_selected.add(index.data(role=0x0100))
+
+        self.uuids_selected = list(self.uuids_selected)
 
         if len(self.uuids_selected) == 0:
-            if len(indices) == 1:
-                self.select_images_on_doubleclick(indices[0])
-                print(
-                    f"Selected image uuids on double click are: {self.uuids_selected}"
-                )
+            #if len(indices) == 1:
+            #for index in indices:
+            self.select_images_on_doubleclick(indices)
+            print(
+                f"Selected image uuids on double click are: {self.uuids_selected}"
+            )
         else:
             print(f"Selected image uuids are: {self.uuids_selected}")
 
-    def select_images_on_doubleclick(self, index):
+    def select_images_on_doubleclick(self, indices):
         ## TODO: Move to image processor
         def get_uuids_from_subtree(index):
             uuids = []
@@ -187,8 +191,15 @@ class PublicDataModel:
             return uuids
 
         self.uuids_selected = []
-        selected_uuids = get_uuids_from_subtree(index)
-        self.uuids_selected.extend(selected_uuids)
+
+        if not isinstance(indices, list):
+            indices = [indices]
+
+        for index in indices:
+            selected_uuids = get_uuids_from_subtree(index)
+            self.uuids_selected.extend(selected_uuids)
+
+        self.uuids_selected = list(set(self.uuids_selected))
 
     def change_databases(self):
         """Add or remove db from db list"""
