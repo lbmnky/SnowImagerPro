@@ -42,6 +42,12 @@ def save_user_config(func):
 
     return wrapper
 
+# https://stackoverflow.com/questions/7961363/removing-duplicates-in-lists#comment106578691_25887387
+# keep for now, even though not used
+def unique(iterable):
+    seen = set()
+    seen_add = seen.add
+    return [item for item in iterable if item not in seen and not seen_add(item)]
 
 WidgetInstance = namedtuple("WidgetInstance", ["widget", "origin"])
 
@@ -157,18 +163,13 @@ class PublicDataModel:
     def select_images(self, indices):
         ## TODO: Move to image processor
 
-        self.uuids_selected = set()
+        self.uuids_selected = []
 
         for index in indices:
             if index.data(role=0x0100):
-                #self.uuids_selected.append(index.data(role=0x0100))
-                self.uuids_selected.add(index.data(role=0x0100))
-
-        self.uuids_selected = list(self.uuids_selected)
+                self.uuids_selected.append(index.data(role=0x0100))
 
         if len(self.uuids_selected) == 0:
-            #if len(indices) == 1:
-            #for index in indices:
             self.select_images_on_doubleclick(indices)
             print(
                 f"Selected image uuids on double click are: {self.uuids_selected}"
@@ -199,7 +200,7 @@ class PublicDataModel:
             selected_uuids = get_uuids_from_subtree(index)
             self.uuids_selected.extend(selected_uuids)
 
-        self.uuids_selected = list(set(self.uuids_selected))
+        self.uuids_selected.extend(self.uuids_selected)
 
     def change_databases(self):
         """Add or remove db from db list"""
