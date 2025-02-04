@@ -33,6 +33,7 @@ class Ui_Form(object):
         self.splitter.setLineWidth(2)
         self.splitter.setMidLineWidth(1)
         self.splitter.setOrientation(Qt.Vertical)
+        self.splitter.setHandleWidth(3)
         self.frame = QFrame(self.splitter)
         self.frame.setObjectName(u"frame")
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
@@ -97,7 +98,9 @@ class Ui_Form(object):
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
         self.horizontalLayout_6 = QHBoxLayout(self.tab_2)
+        self.horizontalLayout_6.setSpacing(0)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.show_exif = QTextEdit(self.tab_2)
         self.show_exif.setObjectName(u"show_exif")
 
@@ -173,7 +176,7 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
 
-        self.tabWidgetMetaExif.setCurrentIndex(0)
+        self.tabWidgetMetaExif.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(Form)
