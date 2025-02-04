@@ -115,6 +115,8 @@ class Ctrls(QWidget):
 
         self._ui.btn_save.clicked.connect(self.on_btn_save_clicked)
 
+        self._ui.btn_debug.clicked.connect(logic.toggle_debug)
+
         self._ui.btn_close_views.clicked.connect(logic.close_views)
 
     def ffc_context_menu(self, pos):

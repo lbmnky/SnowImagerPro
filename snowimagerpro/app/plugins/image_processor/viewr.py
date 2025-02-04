@@ -36,10 +36,11 @@ import snowimagerpro.core as sipro_core
 from snowimagerpro.app.managers import user_config
 from snowimagerpro.core.methods import helper
 
+from snowimagerpro.core import DEBUG
+
 from ..base import ViewrBase, getOpenFileName, getSaveFileName, getSaveFileNameMod, show_warning, yes_no_warning
 
 __all__ = ["Viewr", "getOpenFileName", "getSaveFileName", "getSaveFileNameMod", "show_warning", "yes_no_warning"]
-
 
 class Viewr(ViewrBase, pg.LayoutWidget):
     def __init__(self, image, origin="upper"):
@@ -124,15 +125,24 @@ class Viewr(ViewrBase, pg.LayoutWidget):
             coords_pix = meta["coords_pix"]
             self.add_coords_pix(coords_pix, image)
         except Exception:
+            #coords_pix = meta.coords_pix
             pass
 
         try:
-            ROI = meta["ROI"]
-            self.add_ROI(ROI, sipro_core.snow_image.get_img_size(image))
+            try:
+                ROI = meta["ROI"]
+            except Exception:
+                ROI = meta.ROI
+            self.add_ROI(ROI, sipro_core.methods.get_img_size(image))
         except Exception:
             pass
 
         self.win.resize(x_size, y_size)
+
+        print("DEBUG, ", DEBUG)
+        if DEBUG:
+            self.imv.getView().showGrid(True, True)
+
         self.show()
 
     def onMouseMoved(self, pos):
@@ -145,7 +155,10 @@ class Viewr(ViewrBase, pg.LayoutWidget):
         y, x = int(scenePos.y()), int(scenePos.x())
 
         offset = self.coords_pix_handle.pos()
-        coords_mm = self.image._meta["coords_mm"]
+        try:
+            coords_mm = self.image._meta.coords_mm # for raw images
+        except Exception:
+            coords_mm = self.image._meta["coords_mm"] # for stitched images
 
         h = (x-offset[0]) * self.px_2_mm + coords_mm[0] #+ self.origin_mm[0]
         #v = (img_size[1] - y) * self.px_2_mm + self.origin_mm[1]
@@ -211,7 +224,7 @@ class Viewr(ViewrBase, pg.LayoutWidget):
             text_handles = []
 
             for j in range(n_targets):
-                pos, size = snowpy.snow_image.ROI_pos_to_size(roi[j], img_size)
+                pos, size = sipro_core.methods.ROI_pos_to_size(roi[j], img_size)
                 roi_handle = pg.RectROI(pos, size, pen=(color))
 
                 roi_handle.sigRegionChangeFinished.connect(
@@ -224,7 +237,7 @@ class Viewr(ViewrBase, pg.LayoutWidget):
                 roi_handles.append(roi_handle)
                 self.imv.addItem(roi_handle)
 
-                avs = sipro_core.snow_image.average_in_ROI(self.img, [roi[j]])[0]
+                avs = sipro_core.methods.average_in_ROI(self.img, [roi[j]])[0]
 
                 text = pg.TextItem(
                     ", ".join(str(round(av, 3)) for av in avs),
@@ -285,7 +298,7 @@ class Viewr(ViewrBase, pg.LayoutWidget):
 
         self.image._meta.ROI[idx[0]][idx[1]] = [[x0, y0], [x1, y1]]
 
-        avs = sipro_core.average_in_ROI(self.image._data, [[[x0, y0], [x1, y1]]])[0]
+        avs = sipro_core.methods.average_in_ROI(self.image._data, [[[x0, y0], [x1, y1]]])[0]
         self.TEXT_handles[idx[0]][idx[1]].setPos(
             roi.pos().x() + roi.size().x(), roi.pos().y()
         )
@@ -296,7 +309,7 @@ class Viewr(ViewrBase, pg.LayoutWidget):
         # plugins.redraw_viewr(self)
 
     def redraw(self):
-        img_size = sipro_core.snow_image.get_img_size(self.image)
+        img_size = sipro_core.methods.get_img_size(self.image)
 
         pos = (
             self.image._meta.coords_pix[0] * img_size[0],
@@ -307,11 +320,11 @@ class Viewr(ViewrBase, pg.LayoutWidget):
 
         for i, roi in enumerate(self.image._meta.ROI):
             for j, target in enumerate(roi):
-                pos, size = sipro_core.ROI_pos_to_size(target, img_size)
+                pos, size = sipro_core.methods.ROI_pos_to_size(target, img_size)
                 self.ROI_handles[i][j].setPos(pos)
                 self.ROI_handles[i][j].setSize(size)
 
-                avs = sipro_core.average_in_ROI(self.image._data, [target])[0]
+                avs = sipro_core.methods.average_in_ROI(self.image._data, [target])[0]
                 self.TEXT_handles[i][j].setPos(pos[0] + size[0], pos[1])
                 self.TEXT_handles[i][j].setText(
                     ", ".join(str(round(av, 3)) for av in avs)

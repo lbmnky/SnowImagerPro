@@ -25,6 +25,8 @@ from PySide6.QtWidgets import QFileDialog, QMessageBox, QWidget
 from snowimagerpro.app.managers.data import PublicDataModel
 from snowimagerpro.app.managers.paths import paths
 
+import snowimagerpro.core as sipro_core
+
 from .shared_ui_elements import (
     DatabasesListModel,
     ImageDBListModel,
@@ -50,6 +52,10 @@ class LogicBase(QObject):
         view.close()
         self.views = [i for i in self.views if i != view]
         logging.info("Closed 1 view")
+
+    def toggle_debug(self, *args):
+        sipro_core.toggle_debug()
+
 
     def close_views(self):
         N = 0

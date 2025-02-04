@@ -21,17 +21,20 @@ import logging
 from . import methods
 from .analysis import ImageForAnalysis
 from .metadata import ImageMetadata
-from .processing import DEBUG, Image, ImageSet
+from .processing import Image, ImageSet
+from ._GLOBALS import DEBUG
 
 
 def toggle_debug(*args):
     global DEBUG
+    print(DEBUG)
     if args:
         DEBUG = args[0]
     elif len(args) > 1:
         logging.warning("toggle_debug takes only one argument")
     else:
         DEBUG = not DEBUG
+    print(DEBUG)
 
 
 __all__ = [
