@@ -22,6 +22,8 @@ from snowimagerpro.app.managers import user_config
 from snowimagerpro.app.managers.jobs import threadpool
 from snowimagerpro.app.workers.run_func import ImageProcessor
 
+from snowimagerpro.core._GLOBALS import globals
+
 from ..base import LogicBase, public_data
 from .viewr import AddToDatabaseDialog, Viewr
 

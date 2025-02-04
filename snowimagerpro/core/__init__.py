@@ -18,20 +18,23 @@
 
 import logging
 
+from copy import copy
+
 from . import methods
 from .analysis import ImageForAnalysis
 from .metadata import ImageMetadata
-from .processing import DEBUG, Image, ImageSet
+from .processing import Image, ImageSet
+from ._GLOBALS import globals
 
 
 def toggle_debug(*args):
-    global DEBUG
     if args:
-        DEBUG = args[0]
+        globals.DEBUG = args[0]
     elif len(args) > 1:
         logging.warning("toggle_debug takes only one argument")
     else:
-        DEBUG = not DEBUG
+        globals.DEBUG = not globals.DEBUG
+    print("toggle_debug: {} -> {}".format(not globals.DEBUG, globals.DEBUG))
 
 
 __all__ = [
@@ -40,6 +43,5 @@ __all__ = [
     "ImageForAnalysis",
     "ImageMetadata",
     "toggle_debug",
-    "DEBUG",
     "methods",
 ]

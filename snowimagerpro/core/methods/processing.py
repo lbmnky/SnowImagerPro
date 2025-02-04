@@ -28,13 +28,12 @@ import cv2 as cv
 import numpy as np
 from pydantic import ValidationError
 
-from snowimagerpro.core._GLOBALS import ROOT
+from snowimagerpro.core._GLOBALS import ROOT, globals
 
 from ..metadata import ImageMetadata
 from .helper import error_msg
 from .image_loading import load_bayer, load_dng, load_dng_preview
 
-DEBUG = False
 
 
 def load_db(_db_path):
@@ -600,7 +599,7 @@ def image_blending_laplPyr(images, sigmaX=100, sigmaY=100) -> np.ndarray:
             image = _laplPyr_blend(image, _data, mask, crop)
             logging.info(f"Blending in {time.time() - t} sec")
 
-            if DEBUG:
+            if globals.DEBUG:
                 rmin, rmax, cmin, cmax = crop
                 _tmp = np.zeros_like(image)
                 _tmp[rmin:rmax, cmin:cmax] = mask
@@ -614,7 +613,7 @@ def image_blending_laplPyr(images, sigmaX=100, sigmaY=100) -> np.ndarray:
             image = _data
             stitching_line_img = np.zeros_like(image)
 
-        if DEBUG:
+        if globals.DEBUG:
             image += stitching_line_img
 
     return image

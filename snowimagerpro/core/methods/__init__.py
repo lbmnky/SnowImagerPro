@@ -16,6 +16,6 @@
 # this program. If not, see <https://www.gnu.org/licenses/>.
 #
 
-from .processing import get_img_size
+from .processing import get_img_size, ROI_pos_to_size, average_in_ROI
 
-__all__ = ["get_img_size"]
+__all__ = ["get_img_size", "ROI_pos_to_size", "average_in_ROI"]
