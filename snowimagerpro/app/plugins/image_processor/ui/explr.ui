@@ -32,7 +32,7 @@
         <verstretch>2</verstretch>
        </sizepolicy>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="5,2">
+      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="5">
        <property name="leftMargin">
         <number>0</number>
        </property>
@@ -46,7 +46,14 @@
         <number>0</number>
        </property>
        <item>
-        <layout class="QGridLayout" name="gridLayout" rowstretch="0,0" columnstretch="1,1,1">
+        <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0" columnstretch="1,1,1">
+         <item row="0" column="0" colspan="2">
+          <widget class="QComboBox" name="comboBox">
+           <property name="editable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
          <item row="0" column="2">
           <widget class="QComboBox" name="comboBox_2">
            <property name="maximumSize">
@@ -57,13 +64,6 @@
            </property>
            <property name="frame">
             <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0" colspan="2">
-          <widget class="QComboBox" name="comboBox">
-           <property name="editable">
-            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -89,22 +89,103 @@
            </property>
           </widget>
          </item>
+         <item row="2" column="0" colspan="3">
+          <widget class="QFrame" name="frame_3">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(61, 65, 76);</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QTabWidget" name="tabWidgetMetaExif">
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <widget class="QWidget" name="tab_1">
+               <attribute name="title">
+                <string>Metadata</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QTextEdit" name="show_meta">
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(61, 65, 76);</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_2">
+               <attribute name="title">
+                <string>EXIF</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_6">
+                <item>
+                 <widget class="QTextEdit" name="show_exif"/>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
         </layout>
-       </item>
-       <item>
-        <widget class="QTextEdit" name="show_meta">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(61, 65, 76);</string>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
        </item>
       </layout>
      </widget>
      <widget class="QFrame" name="frame_2">
       <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
         <layout class="QGridLayout" name="gridLayout_2">
          <property name="topMargin">
@@ -153,20 +234,12 @@
      </widget>
     </widget>
    </item>
-   <item>
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Use boxes to show connection between images</string>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>comboBox</tabstop>
   <tabstop>comboBox_2</tabstop>
   <tabstop>treeView</tabstop>
-  <tabstop>show_meta</tabstop>
   <tabstop>listWidget_nogrid_images</tabstop>
   <tabstop>listWidget_grid_images</tabstop>
   <tabstop>listWidget_ref_images</tabstop>
