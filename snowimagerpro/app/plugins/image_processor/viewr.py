@@ -36,7 +36,7 @@ import snowimagerpro.core as sipro_core
 from snowimagerpro.app.managers import user_config
 from snowimagerpro.core.methods import helper
 
-from snowimagerpro.core import DEBUG
+from snowimagerpro.core._GLOBALS import globals
 
 from ..base import ViewrBase, getOpenFileName, getSaveFileName, getSaveFileNameMod, show_warning, yes_no_warning
 
@@ -139,8 +139,7 @@ class Viewr(ViewrBase, pg.LayoutWidget):
 
         self.win.resize(x_size, y_size)
 
-        print("DEBUG, ", DEBUG)
-        if DEBUG:
+        if globals.DEBUG:
             self.imv.getView().showGrid(True, True)
 
         self.show()
