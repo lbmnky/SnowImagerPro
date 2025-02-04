@@ -64,6 +64,9 @@ class View(ViewBase):
             self.explr._ui.comboBox_2, "sortby_list", "image_processor"
         )
 
+        model.public.sortby = user_config.get("processor.sortby")
+        self.explr._ui.comboBox_2.setCurrentText(model.public.sortby)
+
         model.public.raw_image_dbs._update.connect(self.do_update)
 
     def post_init(self):

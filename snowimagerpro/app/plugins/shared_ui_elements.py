@@ -21,6 +21,7 @@ from itertools import groupby
 from PySide6 import QtCore
 
 from snowimagerpro.core.metadata import ImageMetadata
+from snowimagerpro.app.managers import user_config
 
 
 class DatabasesListModel(QtCore.QStringListModel):
@@ -246,6 +247,8 @@ class ImageDBTreeModel(QtCore.QAbstractItemModel):
             by_second = ImageMetadata.by_date
         else:
             raise ValueError("Invalid sortby. Must be 'date' or 'location'")
+
+        user_config.set("processor.sortby", sortby)
 
         _data = {}
         for first, after_first in groupby(db, by_first):

@@ -47,6 +47,7 @@ class UserConfig(ConfigManager):
         "inspector.defaultDirs": [os.path.expanduser("~")],
         "explorer.db_path": os.path.expanduser("~"),
         "explorer.autosave": False,
+        "processor.sortby": "date",
         "processor.overlap_x": 100,
         "processor.overlap_y": 100,
         "processor.h5_path": os.path.expanduser("~"),
