@@ -327,6 +327,7 @@ class Logic(LogicBase):
         uuid = model.private["current_img_uuid"]
         model.public.img_set._image_db[int(uuid)].coords_pix = str(_coords_pix)
 
+    @update_raw_image_dbs
     def update_location(self, _location, uuids):
         for uuid in uuids:
             model.public.img_set._image_db[int(uuid)].location = str(_location)
