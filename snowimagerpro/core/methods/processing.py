@@ -316,7 +316,7 @@ def coords_mm_to_pix(images):
 
     """
 
-    offset = [1000000000.0, 1000000000.0]
+    offset = [np.inf, np.inf]
 
     for img in images.values():
         img_size = get_img_size(img)
