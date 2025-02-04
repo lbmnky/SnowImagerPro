@@ -134,6 +134,8 @@ class ImageSet:
             for entry in self._image_db.values():
                 _tmp = []
                 for _key, item in zip(entry.to_key_list(), entry.to_list()):
+                    if _key in ["_exif", "exif"]:
+                        continue
                     if isinstance(item, list):
                         _tmp.append('"' + str(item) + '"')
                     else:
@@ -344,6 +346,9 @@ class ImageSet:
 
         for _group in sorted_images.values():
             _group = pro.coords_mm_to_pix(_group)
+            for image in _group.values():
+                print("here")
+                print(image._pos)
 
         self.stitched_image = {}
 
