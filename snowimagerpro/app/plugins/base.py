@@ -21,6 +21,7 @@ import logging
 
 from PySide6.QtCore import QObject, Signal
 from PySide6.QtWidgets import QFileDialog, QMessageBox, QWidget
+from PySide6.QtGui import QIcon
 
 from snowimagerpro.app.managers.data import PublicDataModel
 from snowimagerpro.app.managers.paths import paths
@@ -128,6 +129,9 @@ class ViewrBase(QWidget):
 
     def __init__(self, parent=None):
         super(ViewrBase, self).__init__()
+
+        icon_path = paths.resource("icons/SnowImagerPro.ico")
+        self.setWindowIcon(QIcon(icon_path))
 
     def redraw(self):
         print("Redraw not implemented in", self)
