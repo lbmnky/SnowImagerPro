@@ -111,10 +111,15 @@ class ImageSet:
         image_db = helper.expand_db_by_meas_group(image_db)
 
         for entry in image_db.values():
-            fp = entry.filepath
-            with open(fp, "rb") as f:
-                exif = exifread.process_file(f)
-            entry.exif = exif
+            if data_dir:
+                fp = str(data_dir / Path(entry.filepath))
+            else:
+                fp = entry.filepath
+
+            if Path(fp).exists():
+                with open(fp, "rb") as f:
+                    exif = exifread.process_file(f)
+                entry.exif = exif
 
         self._image_db = image_db
 
