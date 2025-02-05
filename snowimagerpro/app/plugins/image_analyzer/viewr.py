@@ -87,20 +87,21 @@ class Viewr(ViewrBase):
         print("showing image")
         plt = pg.PlotItem()
         imv = pg.ImageView(view=plt)
-        plt.hideAxis("left")
+        plt.getViewBox().invertY(False)
+        #plt.hideAxis("left")
         plt.hideAxis("bottom")
-        imv.setImage(data.T)
+        imv.setImage(data.T[:,::-1])
         self.splitter.addWidget(imv)
         if not show_hist:
             imv.ui.histogram.hide()
             imv.ui.roiBtn.hide()
             imv.ui.menuBtn.hide()
-        imv.adjustSize()
+        #imv.adjustSize()
         return plt
 
     def show_profile(self, data):
         plt = pg.PlotWidget()
-        plt.plot(data, range(len(data)))
-        plt.getViewBox().invertY(True)
+        plt.plot(data[::-1], range(len(data)))
+        #plt.getViewBox().invertY(True)
         self.splitter.addWidget(plt)
         return plt

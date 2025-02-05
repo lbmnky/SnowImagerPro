@@ -421,6 +421,7 @@ class ImageForAnalysis:
         qlayout.setRowFixedHeight(0, ph)
 
         p1 = plt1.addPlot(0, 0)
+        p1.getViewBox().invertY(True)
         axes.extend([p1])
 
         p1.getViewBox().setDefaultPadding(0)
@@ -489,7 +490,9 @@ class ImageForAnalysis:
             plt3.setGeometry(*wide_geometry)
 
             p3_1 = plt3.addPlot(0, 0)
+            p3_1.getViewBox().invertY(True)
             p3_2 = plt3.addPlot(0, 1)
+            p3_2.getViewBox().invertY(True)
 
             _tmp = np.nansum(self.R_masked, axis=0)
             _tmp[_tmp == 0] = np.nan
