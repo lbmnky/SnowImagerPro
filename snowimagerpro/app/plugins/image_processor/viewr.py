@@ -77,7 +77,9 @@ class Viewr(ViewrBase, pg.LayoutWidget):
             slice = np_s_[:, :]
 
         self.img = image._data
-        imv.setImage(image._data[slice].T)
+        data = image._data[slice]
+        data[data==0] = float("nan")
+        imv.setImage(data.T)
         imv.setLevels(0, 1)
 
         self.addWidget(imv, row=0, col=0, rowspan=1, colspan=1)
