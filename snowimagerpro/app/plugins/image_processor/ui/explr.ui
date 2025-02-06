@@ -52,6 +52,9 @@
         <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0" columnstretch="1,1,1">
          <item row="0" column="0" colspan="2">
           <widget class="QComboBox" name="comboBox">
+           <property name="whatsThis">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Change image database.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="editable">
             <bool>true</bool>
            </property>
@@ -65,6 +68,9 @@
              <height>16777215</height>
             </size>
            </property>
+           <property name="whatsThis">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sort images in database by location or by date.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/image_processor_images_ordered_by_location.png&quot;/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/image_processor_images_ordered_by_date.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="frame">
             <bool>false</bool>
            </property>
@@ -72,6 +78,9 @@
          </item>
          <item row="1" column="0" colspan="3">
           <widget class="QTreeView" name="treeView">
+           <property name="whatsThis">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Treeview of images in database. Selected individual images or multiple images by double-click or via &amp;quot;Load selected&amp;quot;. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Load from different days or locations by selecting the desired images or image types and click &amp;quot;Load selected&amp;quot;. Here &amp;quot;ref&amp;quot;, &amp;quot;gri&amp;quot; and &amp;quot;ngr&amp;quot; folders are loaded.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/image_processor_Load_selected.png&quot;/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Load all images from one day or location by double clicking the parent element. Here also &amp;quot;ref&amp;quot;, &amp;quot;gri&amp;quot; and &amp;quot;ngr&amp;quot; folders are loaded.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/image_processor_doubleclick_load.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="editTriggers">
             <set>QAbstractItemView::NoEditTriggers</set>
            </property>
@@ -149,6 +158,9 @@
                 </property>
                 <item>
                  <widget class="QTextEdit" name="show_meta">
+                  <property name="whatsThis">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Shows image metadata.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">background-color: rgb(61, 65, 76);</string>
                   </property>
@@ -180,7 +192,11 @@
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QTextEdit" name="show_exif"/>
+                 <widget class="QTextEdit" name="show_exif">
+                  <property name="whatsThis">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Shows image EXIF data.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>
@@ -211,6 +227,9 @@
          </property>
          <item row="1" column="0">
           <widget class="QListWidget" name="listWidget_nogrid_images">
+           <property name="whatsThis">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Shows loaded &amp;quot;no grid&amp;quot; images. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Navigate loaded images using &amp;lt;tab&amp;gt; (forward) &amp;lt;shift-tab&amp;gt; (backward) and &amp;lt;up/down&amp;gt; arrow keys. &amp;lt;Enter&amp;gt; opens image preview.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/image_processor_shows_loaded_images.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="dragDropMode">
             <enum>QAbstractItemView::DropOnly</enum>
            </property>
@@ -262,6 +281,8 @@
   <tabstop>listWidget_grid_images</tabstop>
   <tabstop>listWidget_ref_images</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../../../../../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

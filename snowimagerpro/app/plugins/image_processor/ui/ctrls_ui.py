@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (QAbstractSpinBox, QApplication, QCheckBox, QDoubl
     QGridLayout, QGroupBox, QLabel, QPlainTextEdit,
     QPushButton, QSizePolicy, QSpacerItem, QToolButton,
     QVBoxLayout, QWidget)
+import resources_rc
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -334,11 +335,23 @@ class Ui_Form(object):
         self.cb_preview_ref.setText(QCoreApplication.translate("Form", u"reference", None))
         self.btn_debug.setText(QCoreApplication.translate("Form", u"DEBUG", None))
         self.btn_write_metadata.setText(QCoreApplication.translate("Form", u"Write changed metadata", None))
+#if QT_CONFIG(whatsthis)
+        self.btn_stitch.setWhatsThis(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-weight:600;\">Stitched images</span></p><p><br/></p><p>After images are stitched together, reset the position by moving the green cross onto a know position and typing the absolute position in millimeter into the field &quot;coords_mm&quot;.</p><p><img src=\":/doc/resources/doc/image_processor_stitched_image_setting_pos.png\"/></p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
         self.btn_stitch.setText(QCoreApplication.translate("Form", u"Stitch", None))
         self.btn_close_views.setText(QCoreApplication.translate("Form", u"Close all", None))
         self.btn_set_filepath_out.setText(QCoreApplication.translate("Form", u"...", None))
+#if QT_CONFIG(whatsthis)
+        self.btn_refl_calib.setWhatsThis(QCoreApplication.translate("Form", u"<html><head/><body><p>Perform reflectance calibration </p><p><br/></p><p><img src=\":/doc/resources/doc/image_processor_after_refl_cal.png\"/></p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
         self.btn_refl_calib.setText(QCoreApplication.translate("Form", u"Reflectance calibration", None))
+#if QT_CONFIG(whatsthis)
+        self.btn_ffc.setWhatsThis(QCoreApplication.translate("Form", u"<html><head/><body><p>Perform flat-field correction </p><p><br/></p><p><img src=\":/doc/resources/doc/image_processor_after_ffc.png\"/></p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
         self.btn_ffc.setText(QCoreApplication.translate("Form", u"Flat-field correction", None))
+#if QT_CONFIG(whatsthis)
+        self.btn_preview.setWhatsThis(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-weight:600;\">Preview snow image</span></p><p><br/></p><p><img src=\":/doc/resources/doc/image_processor_preview.png\"/></p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
         self.btn_preview.setText(QCoreApplication.translate("Form", u"Preview", None))
         self.btn_reset.setText(QCoreApplication.translate("Form", u"Reset", None))
         self.btn_load.setText(QCoreApplication.translate("Form", u"Load selected", None))

@@ -1,5 +1,16 @@
 <RCC>
   <qresource prefix="doc">
+    <file>resources/doc/image_processor_stitched_image_setting_pos.png</file>
+    <file>resources/doc/image_processor_after_refl_cal.png</file>
+    <file>resources/doc/image_processor_after_ffc.png</file>
+    <file>resources/doc/image_processor_preview.png</file>
+    <file>resources/doc/db_explorer_copy_meta.png</file>
+    <file>resources/doc/db_explorer_moving_ROIs.png</file>
+    <file>resources/doc/image_processor_shows_loaded_images.png</file>
+    <file>resources/doc/image_processor_Load_selected.png</file>
+    <file>resources/doc/image_processor_doubleclick_load.png</file>
+    <file>resources/doc/image_processor_images_ordered_by_location.png</file>
+    <file>resources/doc/image_processor_images_ordered_by_date.png</file>
     <file>resources/doc/db_explorer_add_images_to_db_filedialog.png</file>
     <file>resources/doc/image_processor_select_and_load_images_from_different_dates.png</file>
   </qresource>

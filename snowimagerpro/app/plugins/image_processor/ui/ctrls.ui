@@ -384,6 +384,9 @@
          <height>0</height>
         </size>
        </property>
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Stitched images&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;After images are stitched together, reset the position by moving the green cross onto a know position and typing the absolute position in millimeter into the field &amp;quot;coords_mm&amp;quot;.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/image_processor_stitched_image_setting_pos.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Stitch</string>
        </property>
@@ -423,6 +426,9 @@
      </item>
      <item row="8" column="0" colspan="4">
       <widget class="QPushButton" name="btn_refl_calib">
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Perform reflectance calibration &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/image_processor_after_refl_cal.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Reflectance calibration</string>
        </property>
@@ -438,6 +444,9 @@
          <width>0</width>
          <height>0</height>
         </size>
+       </property>
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Perform flat-field correction &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/image_processor_after_ffc.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>Flat-field correction</string>
@@ -460,6 +469,9 @@
          <width>0</width>
          <height>0</height>
         </size>
+       </property>
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Preview snow image&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/image_processor_preview.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>Preview</string>
@@ -550,6 +562,8 @@
   <tabstop>checkBox_5</tabstop>
   <tabstop>cb_show_output</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../../../../../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
