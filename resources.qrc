@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="doc">
+    <file>resources/doc/image_processor_DEBUG_stitch_borders.png</file>
     <file>resources/doc/db_explorer_set_coords_px.png</file>
     <file>resources/doc/db_explorer_multiselect_parameter_change.png</file>
     <file>resources/doc/db_explorer_paste_several.png</file>
