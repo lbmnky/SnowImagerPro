@@ -90,6 +90,7 @@ class Viewr(ViewrBase):
         plt.getViewBox().invertY(False)
         #plt.hideAxis("left")
         plt.hideAxis("bottom")
+        data[data==0] = float("nan")
         imv.setImage(data.T[:,::-1])
         self.splitter.addWidget(imv)
         if not show_hist:
