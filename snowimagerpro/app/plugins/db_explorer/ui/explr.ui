@@ -141,6 +141,9 @@
          </property>
          <item row="2" column="6">
           <widget class="QCheckBox" name="cb_update_coords_pix">
+           <property name="whatsThis">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Set pixel position to locate absolute image position&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;green checkbox: view pixel position&lt;/p&gt;&lt;p&gt;red checkbox: manipulate pixel position&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Set the crosshair on a known, absolute image position, e.g., on the y-scale in the image.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/db_explorer_set_coords_px.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="layoutDirection">
             <enum>Qt::RightToLeft</enum>
            </property>
@@ -164,6 +167,9 @@
          </item>
          <item row="2" column="4">
           <widget class="QCheckBox" name="cb_update_ROIs">
+           <property name="whatsThis">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Set ROIs for reflectance calibration&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;red ROI -&amp;gt; white target&lt;/p&gt;&lt;p&gt;green -&amp;gt; gray target (g-&amp;gt;g)&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/db_explorer_moving_ROIs.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="layoutDirection">
             <enum>Qt::RightToLeft</enum>
            </property>
@@ -245,6 +251,9 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="whatsThis">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Change image parameters&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Can be applied to several images simultaneously.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/db_explorer_multiselect_parameter_change.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="title">
             <string/>
@@ -526,6 +535,8 @@
   <tabstop>cb_ref_group</tabstop>
   <tabstop>le_comment</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../../../../../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

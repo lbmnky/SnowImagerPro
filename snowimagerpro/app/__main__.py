@@ -71,7 +71,7 @@ def main(BASE_PATH):
         icon_path=paths.resource("icons/SnowImagerPro.ico"),
         theme_path=paths.resource("themes/dark.qss"),
     )
-
+    print(paths.resource("themes/dark.qss"))
     plugins.post_init()
     logging.getLogger(logger).info("Plugins running post_init.")
 

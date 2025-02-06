@@ -20,6 +20,7 @@ from PySide6.QtWidgets import (QAbstractItemView, QApplication, QComboBox, QFram
     QListWidget, QListWidgetItem, QSizePolicy, QSplitter,
     QTabWidget, QTextEdit, QTreeView, QVBoxLayout,
     QWidget)
+import resources_rc
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -184,8 +185,26 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
+#if QT_CONFIG(whatsthis)
+        self.comboBox.setWhatsThis(QCoreApplication.translate("Form", u"<html><head/><body><p>Change image database.</p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
+#if QT_CONFIG(whatsthis)
+        self.comboBox_2.setWhatsThis(QCoreApplication.translate("Form", u"<html><head/><body><p>Sort images in database by location or by date.</p><p><img src=\":/doc/resources/doc/image_processor_images_ordered_by_location.png\"/></p><p><br/></p><p><img src=\":/doc/resources/doc/image_processor_images_ordered_by_date.png\"/></p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
+#if QT_CONFIG(whatsthis)
+        self.treeView.setWhatsThis(QCoreApplication.translate("Form", u"<html><head/><body><p>Treeview of images in database. Selected individual images or multiple images by double-click or via &quot;Load selected&quot;. </p><p><br/></p><p>Load from different days or locations by selecting the desired images or image types and click &quot;Load selected&quot;. Here &quot;ref&quot;, &quot;gri&quot; and &quot;ngr&quot; folders are loaded.</p><p><img src=\":/doc/resources/doc/image_processor_Load_selected.png\"/></p><p><br/></p><p>Load all images from one day or location by double clicking the parent element. Here also &quot;ref&quot;, &quot;gri&quot; and &quot;ngr&quot; folders are loaded.</p><p><img src=\":/doc/resources/doc/image_processor_doubleclick_load.png\"/></p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
+#if QT_CONFIG(whatsthis)
+        self.show_meta.setWhatsThis(QCoreApplication.translate("Form", u"<html><head/><body><p>Shows image metadata.</p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
         self.tabWidgetMetaExif.setTabText(self.tabWidgetMetaExif.indexOf(self.tab_1), QCoreApplication.translate("Form", u"Metadata", None))
+#if QT_CONFIG(whatsthis)
+        self.show_exif.setWhatsThis(QCoreApplication.translate("Form", u"<html><head/><body><p>Shows image EXIF data.</p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
         self.tabWidgetMetaExif.setTabText(self.tabWidgetMetaExif.indexOf(self.tab_2), QCoreApplication.translate("Form", u"EXIF", None))
+#if QT_CONFIG(whatsthis)
+        self.listWidget_nogrid_images.setWhatsThis(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-weight:600;\">Shows loaded &quot;no grid&quot; images. </span></p><p><br/></p><p>Navigate loaded images using &lt;tab&gt; (forward) &lt;shift-tab&gt; (backward) and &lt;up/down&gt; arrow keys. &lt;Enter&gt; opens image preview.</p><p><img src=\":/doc/resources/doc/image_processor_shows_loaded_images.png\"/></p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
         self.label.setText(QCoreApplication.translate("Form", u"Image", None))
         self.label_3.setText(QCoreApplication.translate("Form", u"Ref", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"With grid", None))

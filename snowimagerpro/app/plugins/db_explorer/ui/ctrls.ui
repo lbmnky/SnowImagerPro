@@ -57,6 +57,9 @@
        <bold>true</bold>
       </font>
      </property>
+     <property name="whatsThis">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;DB Explorer&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:400;&quot;&gt;The &amp;quot;db_explorer&amp;quot; plugin handles the database of raw images and all connections between raw images. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: transparent;</string>
      </property>
@@ -91,6 +94,9 @@
      </item>
      <item row="17" column="0">
       <widget class="QPushButton" name="btn_write_to_new_db">
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Save current database under new filename.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Save a copy ...</string>
        </property>
@@ -122,6 +128,9 @@
        </property>
        <item>
         <widget class="QCheckBox" name="checkBox_autosave">
+         <property name="whatsThis">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use this to autosave database after every change.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="layoutDirection">
           <enum>Qt::RightToLeft</enum>
          </property>
@@ -150,6 +159,9 @@
      </item>
      <item row="3" column="0">
       <widget class="QPushButton" name="btn_remove_image_from_db">
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Remove images&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Removes the highlighted image entries from the database.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>remove image(s) from db</string>
        </property>
@@ -157,6 +169,9 @@
      </item>
      <item row="13" column="0">
       <widget class="QPushButton" name="btn_write_to_curr_db">
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Save the current database. Creates one backup file (&amp;lt;db_name&amp;gt;.csv.bak) in the same folder.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Save database</string>
        </property>
@@ -164,6 +179,9 @@
      </item>
      <item row="19" column="0">
       <widget class="QPushButton" name="btn_delete_db">
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delete current database (file will end up in Recycle Bin)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>DELETE database</string>
        </property>
@@ -171,6 +189,12 @@
      </item>
      <item row="2" column="0">
       <widget class="QPushButton" name="btn_add_image_to_db">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;bla&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Add image to database&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Select one or several image folders (containing 4 SnowImager images) to add them to the database. Selection should be done in the order: &amp;quot;ref&amp;quot;, &amp;quot;ngr&amp;quot; and &amp;quot;gri&amp;quot;. If done in this order, most database parameters &amp;quot;ref group&amp;quot;, dark group&amp;quot;, etc. will be population automatically and correctly.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/db_explorer_add_images_to_db_filedialog.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Add image(s) to db</string>
        </property>
@@ -178,6 +202,9 @@
      </item>
      <item row="10" column="0">
       <widget class="QPushButton" name="btn_add_db">
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add or create a .csv database&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Find a database and add it, or enter a new file name to create a new database.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Add/create database</string>
        </property>
@@ -185,6 +212,9 @@
      </item>
      <item row="7" column="0">
       <widget class="QPushButton" name="pb_paste_metadata">
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Paste selected metadata to highlighted image entries&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/db_explorer_paste_several.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Paste metadata</string>
        </property>
@@ -218,6 +248,9 @@
      </item>
      <item row="6" column="0">
       <widget class="QPushButton" name="pb_copy_metadata">
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Copy metadata&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Select and copy metadata from current image.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/db_explorer_copy_meta.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Copy metadata ...</string>
        </property>
@@ -225,6 +258,9 @@
      </item>
      <item row="18" column="0">
       <widget class="QPushButton" name="btn_remove_db">
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remove database from SnowImagerPro (file will remain on disk)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>remove database</string>
        </property>
@@ -262,6 +298,8 @@
   <tabstop>btn_remove_db</tabstop>
   <tabstop>btn_delete_db</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../../../../../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

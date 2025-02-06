@@ -19,7 +19,8 @@
 import logging
 
 from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QMainWindow
+from PySide6.QtWidgets import QMainWindow, QWhatsThis
+from PySide6.QtGui import QShortcut, QKeySequence
 
 from snowimagerpro.app.managers import plugins
 from snowimagerpro.app.managers.settings import user_config
@@ -38,6 +39,13 @@ class MainView(QMainWindow):
 
         self.setWindowTitle(title)
         self.setWindowIcon(QIcon(icon_path))
+
+        self.ui.actionWhat_s_this.triggered.connect(QWhatsThis.enterWhatsThisMode)
+        self.ui.menubar.setVisible(False)
+        self.shortcut = QShortcut(QKeySequence("Ctrl+W"), self)
+        self.shortcut.activated.connect(QWhatsThis.enterWhatsThisMode)
+
+        self.ui.btn_whatThis.clicked.connect(QWhatsThis.enterWhatsThisMode)
 
         with open(theme_path, "r") as f:
             self.setStyleSheet(f.read())
@@ -66,6 +74,12 @@ class MainView(QMainWindow):
 
         self.ui.toolBox.currentChanged.connect(self.ui.stackedWidget.setCurrentIndex)
         self.ui.toolBox.setCurrentIndex(user_config.get("initial_tab") or 0)
+
+    def toggle_menu_bar(self):
+        if self.ui.menubar.isVisible():
+            self.ui.menubar.setVisible(False)
+        else:
+            self.ui.menubar.setVisible(True)
 
     def update_progress_bar(self, value):
         print(f"Setting progress bar to {value}")

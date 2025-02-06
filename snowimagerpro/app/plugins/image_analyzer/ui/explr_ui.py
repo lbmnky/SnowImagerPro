@@ -80,6 +80,9 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.btn_change_data_dir.setText(QCoreApplication.translate("Form", u"...", None))
+#if QT_CONFIG(whatsthis)
+        self.cb_change_db.setWhatsThis(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-weight:600;\">Change database of processed (stitched) images</span></p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
         self.label_2.setText(QCoreApplication.translate("Form", u"Results from current post-processing", None))
     # retranslateUi
 

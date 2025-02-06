@@ -22,6 +22,7 @@ from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComb
     QVBoxLayout, QWidget)
 
 from pyqtgraph import ImageView
+import resources_rc
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -336,9 +337,18 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.btn_chang_data_dir.setText(QCoreApplication.translate("Form", u"...", None))
+#if QT_CONFIG(whatsthis)
+        self.cb_update_coords_pix.setWhatsThis(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-weight:600;\">Set pixel position to locate absolute image position</span></p><p><br/></p><p>green checkbox: view pixel position</p><p>red checkbox: manipulate pixel position</p><p><br/></p><p>Set the crosshair on a known, absolute image position, e.g., on the y-scale in the image.</p><p><br/></p><p><img src=\":/doc/resources/doc/db_explorer_set_coords_px.png\"/></p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
         self.cb_update_coords_pix.setText(QCoreApplication.translate("Form", u"Coords_pix", None))
         self.label.setText(QCoreApplication.translate("Form", u"filename ", None))
+#if QT_CONFIG(whatsthis)
+        self.cb_update_ROIs.setWhatsThis(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-weight:600;\">Set ROIs for reflectance calibration</span></p><p><br/></p><p>red ROI -&gt; white target</p><p>green -&gt; gray target (g-&gt;g)</p><p><br/></p><p><img src=\":/doc/resources/doc/db_explorer_moving_ROIs.png\"/></p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
         self.cb_update_ROIs.setText(QCoreApplication.translate("Form", u"ROIs", None))
+#if QT_CONFIG(whatsthis)
+        self.details.setWhatsThis(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-weight:600;\">Change image parameters</span></p><p><br/></p><p>Can be applied to several images simultaneously.</p><p><img src=\":/doc/resources/doc/db_explorer_multiselect_parameter_change.png\"/></p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
         self.details.setTitle("")
         self.label_11.setText(QCoreApplication.translate("Form", u"Coords pix", None))
         self.label_9.setText(QCoreApplication.translate("Form", u"location", None))
