@@ -395,7 +395,7 @@ def image_registration(current_image, super_image, dx, dy):
         super_image = shift_y(super_image, -(2 * (dy >= 0) - 1) * np.abs(_dy))
     elif super_image.shape[0] > current_image.shape[0]:
         _dy = super_image.shape[0] - current_image.shape[0]
-        current_image = shift_y(current_image, -(2 * (dy >= 0) - 1) * np.abs(_dy))
+        current_image = shift_y(current_image, +(2 * (dy >= 0) - 1) * np.abs(_dy))
 
     return current_image, super_image
 
