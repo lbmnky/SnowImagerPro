@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="doc">
+    <file>resources/doc/db_explorer_multiselect_parameter_change.png</file>
+    <file>resources/doc/db_explorer_paste_several.png</file>
     <file>resources/doc/image_processor_stitched_image_setting_pos.png</file>
     <file>resources/doc/image_processor_after_refl_cal.png</file>
     <file>resources/doc/image_processor_after_ffc.png</file>

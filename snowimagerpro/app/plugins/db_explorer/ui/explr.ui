@@ -246,6 +246,9 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="whatsThis">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Change image parameters&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Can be applied to several images simultaneously.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/db_explorer_multiselect_parameter_change.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="title">
             <string/>
            </property>
@@ -526,6 +529,8 @@
   <tabstop>cb_ref_group</tabstop>
   <tabstop>le_comment</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../../../../../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

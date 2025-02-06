@@ -22,6 +22,7 @@ from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComb
     QVBoxLayout, QWidget)
 
 from pyqtgraph import ImageView
+import resources_rc
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -339,6 +340,9 @@ class Ui_Form(object):
         self.cb_update_coords_pix.setText(QCoreApplication.translate("Form", u"Coords_pix", None))
         self.label.setText(QCoreApplication.translate("Form", u"filename ", None))
         self.cb_update_ROIs.setText(QCoreApplication.translate("Form", u"ROIs", None))
+#if QT_CONFIG(whatsthis)
+        self.details.setWhatsThis(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-weight:600;\">Change image parameters</span></p><p><br/></p><p>Can be applied to several images simultaneously.</p><p><img src=\":/doc/resources/doc/db_explorer_multiselect_parameter_change.png\"/></p></body></html>", None))
+#endif // QT_CONFIG(whatsthis)
         self.details.setTitle("")
         self.label_11.setText(QCoreApplication.translate("Form", u"Coords pix", None))
         self.label_9.setText(QCoreApplication.translate("Form", u"location", None))

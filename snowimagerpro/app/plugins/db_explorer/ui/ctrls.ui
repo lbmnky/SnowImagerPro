@@ -193,7 +193,7 @@
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;bla&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="whatsThis">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Add image to database&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Select one or several image folders (containing 4 SnowImager images) to add them to the database. Selection should be done in the order: &amp;quot;ref&amp;quot;, &amp;quot;ngr&amp;quot; and &amp;quot;gri&amp;quot;. If done in this order, most database parameters &amp;quot;ref group&amp;quot;, dark group&amp;quot;, etc. will be population automatically and correctly.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/add_images_to_db_filedialog.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Add image to database&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Select one or several image folders (containing 4 SnowImager images) to add them to the database. Selection should be done in the order: &amp;quot;ref&amp;quot;, &amp;quot;ngr&amp;quot; and &amp;quot;gri&amp;quot;. If done in this order, most database parameters &amp;quot;ref group&amp;quot;, dark group&amp;quot;, etc. will be population automatically and correctly.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/db_explorer_add_images_to_db_filedialog.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>Add image(s) to db</string>
@@ -213,7 +213,7 @@
      <item row="7" column="0">
       <widget class="QPushButton" name="pb_paste_metadata">
        <property name="whatsThis">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Paste selected metadata to highlighted image entries&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Paste selected metadata to highlighted image entries&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/db_explorer_paste_several.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>Paste metadata</string>
@@ -249,7 +249,7 @@
      <item row="6" column="0">
       <widget class="QPushButton" name="pb_copy_metadata">
        <property name="whatsThis">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Copy metadata&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Select and copy metadata from current image&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Copy metadata&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Select and copy metadata from current image.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/doc/resources/doc/db_explorer_copy_meta.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>Copy metadata ...</string>
