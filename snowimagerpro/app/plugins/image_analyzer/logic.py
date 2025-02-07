@@ -63,6 +63,13 @@ class Logic(LogicBase):
             uuid = helper.create_uuid()
             model.public.processed_images_db[uuid] = fp
 
+            db = model.public.processed_image_dbs.items[model.public.processed_image_dbs.current_idx]
+            db_fp = db.info["path"]
+
+            with open(db_fp, "a") as f:
+                print(f"Adding {fp} to {db_fp}")
+                f.write(f"{uuid},{str(fp)}\n")
+
     @update_ui
     def add_db(self, fp):
         data_dir = user_config.get("analyzer.data_dir")
