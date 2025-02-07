@@ -246,7 +246,9 @@ class ImageDBTreeModel(QtCore.QAbstractItemModel):
             by_first = ImageMetadata.by_location
             by_second = ImageMetadata.by_date
         else:
-            raise ValueError("Invalid sortby. Must be 'date' or 'location'")
+            user_config.set("processor.sortby", user_config._default["processor.sortby"])
+            user_config.save()
+            raise ValueError("Invalid sortby. Must be 'date' or 'location' ... Setting now. Please restart!")
 
         user_config.set("processor.sortby", sortby)
 
