@@ -320,6 +320,7 @@ class Explr(QWidget):
 
     def show_meta(self, uuid):
         db_entry = model.public.img_set._image_db[uuid]
+        meta = model.public.img_set._image_db[uuid].meta["metadata"]
 
         text = (
             f"Filepath: {db_entry.filepath}\n"
@@ -329,15 +330,18 @@ class Explr(QWidget):
             f"Ref group: {db_entry.ref_group}\n"
             f"Location: {db_entry.location}\n"
             f"Date: {db_entry.date}\n"
-            f"Comment: {db_entry.comment}"
+            f"Comment: {db_entry.comment}\n"
+            f"GPS position (lat./lon.): {meta['latitude']}, {meta['longitude']}\n"
+            f"Altitude: {meta['altitude']}"
         )
+
 
         self._ui.show_meta.setText(text)
         self.show_exif(uuid)
 
     def show_exif(self, uuid):
         exif = model.public.img_set._image_db[uuid].exif
-
+        #print(exif)
         text = (
             f"Type: {exif['Image ImageDescription']}\n"
             f"Author: {exif['Image Make']}\n"

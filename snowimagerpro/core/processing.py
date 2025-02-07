@@ -18,6 +18,7 @@
 
 import concurrent.futures
 import json
+import yaml
 import logging
 from copy import deepcopy
 from datetime import datetime
@@ -117,9 +118,19 @@ class ImageSet:
                 fp = entry.filepath
 
             if Path(fp).exists():
+
+                meta_path = fp.split("-")[:-1]
+                meta_path = "-".join(meta_path) + "_metadata.yaml"
+
+                with open(meta_path, "r") as f:
+                    meta = yaml.safe_load(f)
+                entry.meta = meta
+
                 with open(fp, "rb") as f:
                     exif = exifread.process_file(f)
                 entry.exif = exif
+
+
 
         self._image_db = image_db
 

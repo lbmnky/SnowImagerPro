@@ -159,6 +159,7 @@ class ImageMetadata(BaseModel):
     aux_data: str = "[]"
     comment: str = "_"
     exif: Any = {}
+    meta: Any = {}
 
     def __setitem__(self, key, value):
         setattr(self, key, value)
@@ -191,6 +192,9 @@ class ImageMetadata(BaseModel):
 
     def by_wavelength(self):
         return self.wavelength
+
+    def by_drk_group(self):
+        return self.drk_group
 
     def by_ID(self):
         return self.ID
