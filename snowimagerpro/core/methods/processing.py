@@ -380,7 +380,7 @@ def image_registration(current_image, super_image, dx, dy):
         Tuple[ndarray, ndarray]: A tuple containing the aligned current image and the aligned super image.
     """
 
-    current_image = shift_image(current_image, dy, dx)
+    current_image = shift_image(current_image, -dy, dx)
 
     # adjust super-image shape
     if super_image.shape[1] < current_image.shape[1]:
@@ -392,7 +392,7 @@ def image_registration(current_image, super_image, dx, dy):
 
     if super_image.shape[0] < current_image.shape[0]:
         _dy = current_image.shape[0] - super_image.shape[0]
-        super_image = shift_y(super_image, -(2 * (dy >= 0) - 1) * np.abs(_dy))
+        super_image = shift_y(super_image, +(2 * (dy >= 0) - 1) * np.abs(_dy))
     elif super_image.shape[0] > current_image.shape[0]:
         _dy = super_image.shape[0] - current_image.shape[0]
         current_image = shift_y(current_image, +(2 * (dy >= 0) - 1) * np.abs(_dy))
@@ -579,7 +579,7 @@ def image_blending_laplPyr(images, sigmaX=100, sigmaY=100) -> np.ndarray:
         dx_mm, dy_mm = _img._pos
         scale = _img._meta.px_2_mm
         dx = int(dx_mm / scale)
-        dy = -int(dy_mm / scale)
+        dy = int(dy_mm / scale)
 
         print(_img._meta.filepath)
         print("dx_mm, dy_mm", dx_mm, dy_mm)
